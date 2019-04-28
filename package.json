@@ -23,7 +23,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "eslint": "^5.16.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "jwt-decode": "^2.2.0",
     "ng-busy": "^7.0.0",
     "rxjs": "~6.3.3",

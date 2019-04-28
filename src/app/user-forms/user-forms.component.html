@@ -23,14 +23,14 @@
 			      </li>
 			    </ul>
 			  </div>
-			</nav>			
-		</div>	
+			</nav>
+		</div>
 	</div>
 	<div class="row mb-5">
-		
+
 	</div>
 	<div class="col text-center mb-5">
-		<img src="assets/logo1.png">
+    <img src="assets/logo1.png" class="mt-3 img-fluid" alt="Responsive image">
 	</div>
 
 	<div class="row">
@@ -44,11 +44,11 @@
 				<tbody [ngBusy]="busy">
 					<tr *ngFor="let form of surveys">
 						<td>{{form.title}}</td>
-						<td><img class="icon" src="assets/edit.png" routerLink="/submit/{{form._id}}"></td>
-						<td><img class="icon" src="assets/delete.png" (click)="deleteSurvey(form._id)"></td>
+						<td><img class="icon" src="assets/edit.png" alt="Responsive image" routerLink="/submit/{{form._id}}"></td>
+						<td><img class="icon" src="assets/delete.png" alt="Responsive image" (click)="deleteSurvey(form._id)"></td>
 					</tr>
 				</tbody>
-			</table>		
+			</table>
 		</div>
 	</div>
 </div>

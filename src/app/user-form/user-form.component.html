@@ -23,14 +23,14 @@
 							</li>
 						</ul>
 					</div>
-				</nav>			
-			</div>	
+				</nav>
+			</div>
 		</div>
 		<div class="row mb-5">
 		</div>
 
 		<div class="col text-center mb-5">
-			<img src="assets/logo1.png">
+			<img src="assets/logo1.png" class="mt-3 img-fluid" alt="Responsive image">
 		</div>
 
 
@@ -102,18 +102,18 @@
 						<input [(ngModel)]="survey.proof3" type="text" name="proof3" class="form-control mb-4" placeholder="Dowód wkładu naukowego nr.3" maxlength="200" data-toggle="tooltip" data-placement="top" title="Najważniejsze publikacje (z afiliacją danej jednostki naukowej) ściśle związane z wynikami badań wskazanymi w poprzedniej części formularza. Wykaz może zawierać maksymalnie pięć pozycji pochodzących z ostatnich 12 lat.">
 						<input [(ngModel)]="survey.proof4" type="text" name="proof4" class="form-control mb-4" placeholder="Dowód wkładu naukowego nr.4" maxlength="200" data-toggle="tooltip" data-placement="top" title="Najważniejsze publikacje (z afiliacją danej jednostki naukowej) ściśle związane z wynikami badań wskazanymi w poprzedniej części formularza. Wykaz może zawierać maksymalnie pięć pozycji pochodzących z ostatnich 12 lat.">
 						<input [(ngModel)]="survey.proof5" type="text" name="proof5" class="form-control mb-4" placeholder="Dowód wkładu naukowego nr.5" maxlength="200" data-toggle="tooltip" data-placement="top" title="Najważniejsze publikacje (z afiliacją danej jednostki naukowej) ściśle związane z wynikami badań wskazanymi w poprzedniej części formularza. Wykaz może zawierać maksymalnie pięć pozycji pochodzących z ostatnich 12 lat.">
-						
+
 						<textarea [(ngModel)]="survey.description" rows="6" class="form-control mb-4" name="description" placeholder="Szczegółowy opis wpływu" #opisWplywu="ngModel" maxlength="6000" data-toggle="tooltip" data-placement="top" required title="W tej sekcji należy udzielić odpowiedzi na następujące pytania: W jaki sposób podmioty badawcze przyczyniły się do rozwiązania konkretnych problemów społecznych, gospodarczych lub kulturowych? Jakie nowe metody, technologie, polityki, akty prawne, teorie naukowe, postawy, poglądy itp. zostały przyjęte, wdrożone lub podjęte w wyniku współpracy z naukowcami? Jakie są społeczne, ekonomiczne, środowiskowe lub kulturowe korzyści z badań i odkryć naukowych przyjęte przez konkretne grupy społeczne? Jaki jest zasięg oddziaływania lub zakres korzyści, zmian społecznych, ekonomicznych, środowiskowych lub kulturowych dla beneficjentów wpływu? Aby udzielić na nie odpowiedzi należy wskazać konkretne obszary oddziaływania  i dla każdego z nich wskazać, które osiągnięcia naukowe przyczyniły się do zaistnienia wpływu oraz jakie było ich znaczenia w osiągnięciu konkretnych rezultatów wpływu (zmian, korzyści społecznych, gospodarczych lub kulturowych dla szerszej społeczności). Ponadto dla poszczególnych korzyści konieczne jest określenie zasięgu wpływu w odniesieniu do konkretnych użytkowników końcowych lub beneficjentów wpływu. Pomocne będą tu informacje dotyczące ścieżki wpływu, zawierające informacje o wykorzystaniu różnego typu interakcji między naukowcami a docelowymi grupami społecznymi w celu uzyskania określonych skutków wpływu (szczegółowy opis możliwych interakcji oraz metody tworzenia ścieżki wpływu omówiono w poprzednim rozdziale podręcznika). Wszystkie wymienione w narracji korzyści wynikające z wpływu muszą być poparte dowodami (należy wstawić odwołania do wykazu dowodów zawartego się następnym polu formularza).
 						"></textarea>
 						<div *ngIf="opisWplywu.invalid && opisWplywu.touched" class="validation-error" style="color:#FF0000">Pole wymagane!</div>
-						
+
 						<textarea [(ngModel)]="survey.proof" rows="6" class="form-control" name="proof" placeholder="Dowody wpływu" #dowodyWplywu="ngModel" data-toggle="tooltip" data-placement="top" required title="Źródła pisemne potwierdzenia wystąpienia wpływu; maksymalnie 5 referencji najdalej sprzed 4 lat. Dowody powinny w sposób jednoznaczny wskazywać na wystąpienie wpływu."></textarea>
 						<div *ngIf="dowodyWplywu.invalid && dowodyWplywu.touched" class="validation-error" style="color:#FF0000">Pole wymagane!</div>
 						<div class="text-right">
 							<button class="btn btn-outline-secondary mt-4" [disabled]="form.invalid" type="submit" (click)="save()"><span *ngIf="!survey._id">Wyślij</span><span *ngIf="survey._id">Zapisz zmiany</span></button>
 						</div>
 					</form>
-				</div>			
+				</div>
 			</div>
 		</div>
 	</div>
