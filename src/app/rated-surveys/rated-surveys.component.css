@@ -1,0 +1,35 @@
+.over {
+	width: 80%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 10;
+	background-color: rgb(255, 255, 255);
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.under {
+	width: 100%;
+	height: 230%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 9;
+	background-color: #18BC9C;
+	opacity: 0.2;
+}
+
+hr {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }

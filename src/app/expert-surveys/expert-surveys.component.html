@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    			<span class="navbar-toggler-icon"></span>
+  			</button>
+  			<div class="collapse navbar-collapse" id="navbarText">
+			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item mr-5">
+			        <a class="nav-link" routerLink="/expert">Strona główna</a>
+			      </li>
+			      <li class="nav-item mr-5">
+			        <a class="nav-link" routerLink="/expert-surveys">Oceń formularz zgłoszeniowy wpływu</a>
+			      </li>
+			    </ul>
+			    <ul class="navbar-nav">
+			    	<li class="nav-item">
+			        <a class="nav-link" href="/" (click)="logout()">Wyloguj</a>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>			
+		</div>	
+	</div>
+	<div class="row mb-5">
+		
+	</div>
+
+
+	<div class="row">
+		<div class="col text-center pr-5 pl-5">
+			<table class="table table-striped table-dark">
+				<thead>
+					<tr>
+						<th>Tytuł studium przypadku</th>
+						<th>Ocenione</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let survey of surveys">
+						<td>{{survey.title}}</td>
+						<td><span *ngIf="survey.rates[0] && (survey.rates[0].expert == userService.theIdentity()._id) || survey.rates[1] && (survey.rates[1].expert == userService.theIdentity()._id)">✓</span></td>
+						<td><button class="btn btn-primary" routerLink="/expert-rating/{{survey._id}}">Oceń ten formularz</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+		
+	</div>

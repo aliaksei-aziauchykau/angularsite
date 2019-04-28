@@ -1,0 +1,50 @@
+<div class="container main">
+	<div class="row">
+		<div class="col-sm">
+		</div>
+		<div *ngIf="forgot" class="col-sm">
+			<div *ngIf="forgot" class="col-md">
+					<img src="assets/logo1.png" alt="" class="">
+				<h3 class="mt-5">Wprowadź swój email logowania do systemu:</h3>
+				<form>
+					<div class="form-group">
+						<input [(ngModel)]="forgotEmail" type="email" name="forgotEmail" class="form-control mt-5 mb-2" placeholder="Email">
+						<div class="form-row text-center">
+    					<div class="col-12">
+        				<button type="submit" class="btn btn-primary mb-1" (click)="forgotUser()">Wyślij email zmiany hasła</button>
+    					</div>
+						</div>
+						<p class="mb-5 text-center btn btn-light mt-1"><a (click)="changeToLogin()">Wróć do strony logowania</a></p>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div *ngIf="loggedIn" class="col-sm">
+			<button (click)="logout()">Wyloguj</button>
+		</div>
+		<div *ngIf="resetPassw" class="col-sm">
+			<img src="assets/logo1.png" alt="" class="mb-3">
+			<div>
+				<form class="form-group text-center">
+					<input [(ngModel)]="resetPass" (ngModelChange)="validateButton()" class="form-control mb-2" type="password" name="resetPass" placeholder="New Password" required>
+					<input [(ngModel)]="checkPass" (ngModelChange)="validateButton()" class="form-control mb-2" type="password" name="checkPass" placeholder="Confirm Password" required>
+					<button class="btn btn-primary" (click)="resetPassword()"><i [ngBusy]="busy"></i>Resetuj hasło</button>
+				</form>
+			</div>
+			
+		</div>
+		<div *ngIf="loggedOut" class="col-sm">
+			<img src="assets/logo1.png" alt="" class="mb-3">
+			<div>
+				<form class="form-group text-center mb-1">
+					<input [(ngModel)]="email" class="form-control mb-2" type="email" name="name" placeholder="Email" required>
+					<input [(ngModel)]="password" class="form-control mb-2" type="password" name="password" placeholder="Password" required>
+					<button class="btn btn-primary myButton" (click)="login()"><i [ngBusy]="busy"></i>Zaloguj</button>
+				</form>
+				<p class="text-center btn btn-light myButton mt-1"><a (click)="changeToForgot()">Przywrócenie hasła</a></p>
+			</div>
+		</div>
+		<div class="col-sm">
+		</div>
+	</div>
+</div>

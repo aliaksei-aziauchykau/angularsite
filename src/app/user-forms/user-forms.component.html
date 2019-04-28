@@ -1,0 +1,54 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    			<span class="navbar-toggler-icon"></span>
+  			</button>
+  			<div class="collapse navbar-collapse" id="navbarText">
+			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item mr-5">
+			        <a class="nav-link"  routerLink="/home">Strona główna</a>
+			      </li>
+			      <li class="nav-item mr-5">
+			        <a class="nav-link"  routerLink="/submit">Wypełnij formularz zgłoszeniowy wpływu</a>
+			      </li>
+			      <li class="nav-item mr-5">
+			        <a class="nav-link"  routerLink="/filled">Lista formularzy</a>
+			      </li>
+			    </ul>
+			    <ul class="navbar-nav">
+			    	<li class="nav-item">
+			        <a class="nav-link" href="/" (click)="logout()">Wyloguj</a>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>			
+		</div>	
+	</div>
+	<div class="row mb-5">
+		
+	</div>
+	<div class="col text-center mb-5">
+		<img src="assets/logo1.png">
+	</div>
+
+	<div class="row">
+		<div class="col-10 border mx-auto text-center pb-0">
+			<table class="table table-striped mx-auto px-auto">
+				<thead>
+					<th>Tytuł</th>
+					<th>Edytuj</th>
+					<th>Usuń</th>
+				</thead>
+				<tbody [ngBusy]="busy">
+					<tr *ngFor="let form of surveys">
+						<td>{{form.title}}</td>
+						<td><img class="icon" src="assets/edit.png" routerLink="/submit/{{form._id}}"></td>
+						<td><img class="icon" src="assets/delete.png" (click)="deleteSurvey(form._id)"></td>
+					</tr>
+				</tbody>
+			</table>		
+		</div>
+	</div>
+</div>
