@@ -25,6 +25,8 @@ import { ExpertComponent } from './expert/expert.component';
 import { ExpertSurveysComponent } from './expert-surveys/expert-surveys.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 
+import {MatFormFieldModule, MatSelectModule, MatInputModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,13 +40,17 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
     RatedSurveysComponent,
     ExpertComponent,
     ExpertSurveysComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
     CommonModule,
     RouterModule.forRoot(
       appRoutes,

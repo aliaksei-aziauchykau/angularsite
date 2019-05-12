@@ -119,8 +119,9 @@
 					<tr>
 						<th>Tytuł studium przypadku</th>
 						<th>Dziedzina nauki</th>
-						<th>Expert nr 1</th>
-						<th>Expert nr 2</th>
+						<th>Ekspert nr 1</th>
+            <th>Ekspert nr 2</th>
+            <th>Oceny cząstkowe ekspertów</th>
 						<th>Średnia ocena wpływu</th>
 					</tr>
 				</thead>
@@ -129,7 +130,8 @@
 						<td>{{survey.title}}</td>
 						<td><span *ngIf="survey.discipline">{{survey.discipline}}</span></td>
 						<td><span *ngIf="survey.expertOne">{{survey.expertOne.name}}</span></td>
-						<td><span *ngIf="survey.expertTwo">{{survey.expertTwo.name}}</span></td>
+            <td><span *ngIf="survey.expertTwo">{{survey.expertTwo.name}}</span></td>
+            <td><span *ngFor="let rate of survey.rates" class="list-comma">{{rate.rate}} </span></td>
 						<td>{{calculateRate(survey.rates)}}</td>
 					</tr>
 				</tbody>

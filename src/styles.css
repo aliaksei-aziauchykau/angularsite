@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url('//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css');
 .alertify-notifier .ajs-message.ajs-success {
 	color: rgb(255, 255, 255) !important;
@@ -135,3 +136,5 @@
     opacity: 0.25;
   }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
