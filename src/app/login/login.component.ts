@@ -118,11 +118,7 @@ export class LoginComponent implements OnInit {
   }
 
   validateButton() {
-    if (this.resetPass == this.checkPass) {
-      this.canReset = false;
-    } else {
-      this.canReset = true;
-    }
+    this.canReset = this.resetPass !== this.checkPass;
   }
 
 }

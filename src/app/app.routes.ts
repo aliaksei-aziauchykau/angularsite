@@ -13,10 +13,13 @@ import { RatedSurveysComponent } from 'src/app/rated-surveys/rated-surveys.compo
 
 import { AdminGuardService as AdminGuard } from './admin-guard.service';
 import { ExpertGuardService as ExpertGuard } from './expert-guard.service';
+import { AssignUsersToFormsComponent } from './assign-users-to-forms/assign-users-to-forms.component';
+import { UserAssignedFormsComponent } from './user-assigned-forms/user-assigned-forms.component';
 
 export const appRoutes: Routes = [
   { path: 'home', component: UserHomeComponent },
-  { path: 'submit', component: UserFormComponent },
+  { path: 'submit', component: UserAssignedFormsComponent },
+  { path: 'submit/new', component: UserFormComponent },
   { path: 'submit/:id', component: UserFormComponent },
   { path: 'filled', component: UserFormsComponent },
   { path: '', component: LoginComponent },
@@ -25,6 +28,7 @@ export const appRoutes: Routes = [
   { path: 'admin-users', component: AdminUsersComponent, canActivate: [AdminGuard] },
   { path: 'new-surveys', component: NewSurveysComponent, canActivate: [AdminGuard] },
   { path: 'rated-surveys', component: RatedSurveysComponent, canActivate: [AdminGuard] },
+  { path: 'assign-users-to-forms', component: AssignUsersToFormsComponent, canActivate: [AdminGuard] },
   { path: 'expert', component: ExpertComponent, canActivate: [ExpertGuard] },
   { path: 'expert-rating/:id', component: ExpertRatingComponent, canActivate: [ExpertGuard] },
   { path: 'expert-surveys', component: ExpertSurveysComponent, canActivate: [ExpertGuard] },
