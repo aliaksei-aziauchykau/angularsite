@@ -59,6 +59,7 @@ export class UserFormComponent implements OnInit {
   }
 
   saveSurvey() {
+    this.survey.discipline = this.route.snapshot.queryParamMap.get('discipline');
     this.surveyService.addSurvey(this.survey).subscribe(result => {
         alertify.success('Formularz dodany pomyślnie!');
         this.router.navigate(['/home']);

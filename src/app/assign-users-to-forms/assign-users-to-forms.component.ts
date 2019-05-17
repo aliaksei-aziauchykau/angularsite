@@ -4,6 +4,8 @@ import { SurveyService } from '../survey.service';
 import { UserService } from '../user.service';
 import { NgForm } from '@angular/forms';
 
+const alertify = require('alertifyjs');
+
 @Component({
   selector: 'app-assign-users-to-forms',
   templateUrl: './assign-users-to-forms.component.html',
@@ -37,11 +39,22 @@ export class AssignUsersToFormsComponent implements OnInit {
 
   onSelectDiscipline(discipline: string) {
     this.userService.getUsersByDiscipline(discipline)
-      .subscribe(users => this.users = users);
+      .subscribe(users => {
+          this.users = users;
+        },
+        () => {
+          alertify.error(`An error happened while trying to fetch users with ${ discipline }.`);
+        });
   }
 
   onAssign() {
     this.userService.updateUser({ _id: this.form.value.user, numberOfForms: Number.parseInt(this.form.value.numberOfForms, 10) })
-      .subscribe(() => this.form.resetForm());
+      .subscribe(() => {
+          alertify.success(`User successfully assigned to ${ this.form.value.numberOfForms } forms.`);
+          this.form.resetForm();
+        },
+        () => {
+          alertify.error('An error happened while trying to assign user to forms.');
+        });
   }
 }
