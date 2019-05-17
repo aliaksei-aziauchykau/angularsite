@@ -40,11 +40,6 @@
 				<h2 class="display-5 mb-4 mt-4">Formularz zgłoszeniowy wpływu</h2>
 					<div class="form-group mx-auto px-auto">
 					<form class="form-group text-center m-2">
-						<select [(ngModel)]="survey.discipline" class="form-control mb-4" name="discipline" #Dyscyplina="ngModel" data-toggle="tooltip" data-placement="top" title="Wybierz dziedzinę naukową" required>
-							<option value="" disabled="">Wybierz dziedzinę naukową</option>
-              <option *ngFor="let discipline of disciplines" [value]="discipline.key">{{discipline.value}}</option>
-						</select>
-						<div *ngIf="Dyscyplina.invalid && Dyscyplina.touched" class="validation-error" style="color:#FF0000">Pole wymagane!</div>
 						<input [(ngModel)]="survey.title" type="text" name="title" #studiumPrzypadku="ngModel" class="form-control mb-4" placeholder="Tytuł" maxlength="135" data-toggle="tooltip" data-placement="top" required title="Tytuł studium przypadku">
 						<div *ngIf="studiumPrzypadku.invalid && studiumPrzypadku.touched" class="validation-error" style="color:#FF0000">Pole wymagane!</div>
 						<textarea [(ngModel)]="survey.summary" rows="6" class="form-control mb-4" name="summary" #streszczenie="ngModel" placeholder="Streszczenie" maxlength="760" data-toggle="tooltip" data-placement="top" required title="Powinno zawierać syntetyczny opis wpływu badań naukowych przeprowadzonych w danej jednostce naukowej. W streszczeniu należy podać główne skutki wpływu, krótką charakterystykę podmiotu oddziaływania (społeczności spoza środowiska akademickiego) oraz krótką charakterystykę badań, których wyniki przyczyniły się do uzyskania wpływu. Nie może to być podsumowanie badań."></textarea>
