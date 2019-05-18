@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -25,7 +25,9 @@ import { ExpertComponent } from './expert/expert.component';
 import { ExpertSurveysComponent } from './expert-surveys/expert-surveys.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 
-import {MatFormFieldModule, MatSelectModule, MatInputModule} from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { AssignUsersToFormsComponent } from './assign-users-to-forms/assign-users-to-forms.component';
+import { UserAssignedFormsComponent } from './user-assigned-forms/user-assigned-forms.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {MatFormFieldModule, MatSelectModule, MatInputModule} from '@angular/mate
     ExpertComponent,
     ExpertSurveysComponent,
     AdminUsersComponent,
-
+    AssignUsersToFormsComponent,
+    UserAssignedFormsComponent
   ],
   imports: [
     BrowserModule,

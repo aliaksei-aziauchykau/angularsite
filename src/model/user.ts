@@ -8,6 +8,7 @@ export interface User extends BaseUser {
   seen?: Date;
   password?: string;
   discipline?: string;
+  numberOfForms: number;
 }
 
 export interface BaseUser {
