@@ -41,7 +41,7 @@
 				<tbody>
 					<tr *ngFor="let survey of surveys">
 						<td>{{survey.title}}</td>
-						<td><span *ngIf="survey.rates[0] && (survey.rates[0].expert == userService.theIdentity()._id) || survey.rates[1] && (survey.rates[1].expert == userService.theIdentity()._id)">✓</span></td>
+						<td><span *ngIf="surveyRated(survey)">✓</span></td>
 						<td><button class="btn btn-primary" routerLink="/expert-rating/{{survey._id}}">Oceń ten formularz</button></td>
 					</tr>
 				</tbody>

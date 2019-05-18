@@ -134,7 +134,7 @@
 						<td><span *ngIf="survey.discipline">{{survey.discipline}}</span></td>
 						<td><span *ngIf="survey.expertOne">{{survey.expertOne.name}}</span></td>
             <td><span *ngIf="survey.expertTwo">{{survey.expertTwo.name}}</span></td>
-            <td><span *ngFor="let rate of survey.rates" class="list-comma">{{rate.rate}} </span></td>
+            <td><span *ngFor="let rate of getNonDraftedRates(survey)" class="list-comma">{{rate.rate}} </span></td>
 						<td>{{calculateRate(survey.rates)}}</td>
 					</tr>
 				</tbody>

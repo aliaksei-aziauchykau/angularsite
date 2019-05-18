@@ -7,6 +7,7 @@ export interface Rate extends BaseRate {
   rate?: number;
   survey?: string;
   expert?: string;
+  draft?: boolean;
 }
 
 export interface BaseRate {
