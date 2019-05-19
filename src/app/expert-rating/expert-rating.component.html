@@ -1,174 +1,252 @@
 <div class="container h-100">
-	<div class="row">
-		<div class="col">
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
-  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    			<span class="navbar-toggler-icon"></span>
-  			</button>
-  			<div class="collapse navbar-collapse" id="navbarText">
-			    <ul class="navbar-nav mr-auto">
-			      <li class="nav-item mr-5">
-			        <a class="nav-link" routerLink="/expert">Strona główna</a>
-			      </li>
-			      <li class="nav-item mr-5">
-			        <a class="nav-link" routerLink="/expert-surveys">Oceń formularz zgłoszeniowy wpływu</a>
-			      </li>
-			    </ul>
-			    <ul class="navbar-nav">
-			    	<li class="nav-item">
-			        <a class="nav-link" href="/" (click)="logout()">Wyloguj</a>
-			      </li>
-			    </ul>
-			  </div>
-			</nav>
-		</div>
-	</div>
-	<div class="row mb-5">
+  <div class="row">
+    <div class="col">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item mr-5">
+              <a class="nav-link" routerLink="/expert">Strona główna</a>
+            </li>
+            <li class="nav-item mr-5">
+              <a class="nav-link" routerLink="/expert-surveys">Oceń formularz zgłoszeniowy wpływu</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/" (click)="logout()">Wyloguj</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row mb-5">
 
-	</div>
+  </div>
 
-	<div class="row">
-			<div class="col-12 text-center">
-					<img src="assets/logo1.png" class="mt-3 img-fluid" alt="Responsive image">
-				</div>
-			</div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <img src="assets/logo1.png" class="mt-3 img-fluid" alt="Responsive image">
+    </div>
+  </div>
 
-		<div class="mt-3 mb-2">
-			<div>
-				<div *ngIf="rated" class="col-8 text-center mx-auto">
-					<h3 class="already mb-3">Formularz jest już oceniony!</h3>
-					<h4>Jeśli chcesz nanieść poprawki proszę wypełnić formularz poniżej</h4>
-					<a routerLink="/expert-surveys">Wróć do formularzy</a>
-				</div>
-				<div *ngIf="!rated" class="col-8 border mx-auto text-left">
-					<div *ngIf="survey" class="mt-2 ml-3">
-						<h4>Tytuł studium przypadku: {{survey.title}}</h4>
-						<p><strong>Dziedzina naukowa:</strong> {{survey.discipline}}</p>
-						<p><strong>Streszczenie:</strong> {{survey.summary}}</p>
-						<p><strong>Wkład badań naukowych:</strong> {{survey.contribution}}</p>
-						<p><strong>Dowód wkładu naukowego nr.1:</strong> {{survey.proof1}}</p>
-						<p><strong>Dowód wkładu naukowego nr.2:</strong> {{survey.proof2}}</p>
-						<p><strong>Dowód wkładu naukowego nr.3:</strong> {{survey.proof3}}</p>
-						<p><strong>Dowód wkładu naukowego nr.4:</strong> {{survey.proof4}}</p>
-						<p><strong>Dowód wkładu naukowego nr.5:</strong> {{survey.proof5}}</p>
-						<p><strong>Opis szczegółowy wpływu:</strong> {{survey.description}}</p>
-						<p><strong>Dowody wpływu:</strong> {{survey.proof}}</p>
-					</div>
-				</div>
+  <div class="mt-3 mb-2">
+    <div *ngIf="rated" class="col-8 text-center mx-auto">
+      <h3 class="already mb-3">Formularz jest już oceniony!</h3>
+      <div class="row text-left mx-auto">
+        <p><strong>1. Czy i w jakim stopniu badania przyczyniły się do zaistnienia wpływu?</strong></p>
+        <p>{{survey.rates[ratingIndex].question1}}</p>
+        <p><strong>2. Jakie było znaczenie wkładu badań?</strong></p>
+        <p>{{survey.rates[ratingIndex].question2}}</p>
+        <p><strong>3. Jaki był charakter i zasięg wpływu opisany w studium przypadku?</strong></p>
+        <p>{{survey.rates[ratingIndex].question3}}</p>
+        <p><strong>4. Czy i w jakim stopniu przedstawione dowody pozwalają na stwierdzenie powstania korzyści/ zmian
+          wynikających z zaistnienia wpływu?</strong></p>
+        <p>{{survey.rates[ratingIndex].question4}}</p>
+        <p><strong>5. Przedstawione studium przypadku wykazało, że przeprowadzone w
+          jednostce badania miały:</strong></p>
+        <p>{{survey.rates[ratingIndex].question5}}</p>
+        <p><strong>6. Ocena ogólna</strong>: {{survey.rates[ratingIndex].rate}}</p>
+      </div>
+      <a routerLink="/expert-surveys">Wróć do formularzy</a>
+    </div>
+    <div *ngIf="!rated" class="col-8 border mx-auto text-left">
+      <div *ngIf="survey" class="mt-2 ml-3">
+        <h4>Tytuł studium przypadku: {{survey.title}}</h4>
+        <p><strong>Dziedzina naukowa:</strong> {{survey.discipline}}</p>
+        <p><strong>Streszczenie:</strong> {{survey.summary}}</p>
+        <p><strong>Wkład badań naukowych:</strong> {{survey.contribution}}</p>
+        <p><strong>Dowód wkładu naukowego nr.1:</strong> {{survey.proof1}}</p>
+        <p><strong>Dowód wkładu naukowego nr.2:</strong> {{survey.proof2}}</p>
+        <p><strong>Dowód wkładu naukowego nr.3:</strong> {{survey.proof3}}</p>
+        <p><strong>Dowód wkładu naukowego nr.4:</strong> {{survey.proof4}}</p>
+        <p><strong>Dowód wkładu naukowego nr.5:</strong> {{survey.proof5}}</p>
+        <p><strong>Opis szczegółowy wpływu:</strong> {{survey.description}}</p>
+        <p><strong>Dowody wpływu:</strong> {{survey.proof}}</p>
+      </div>
+    </div>
+  </div>
 
-			</div>
-		</div>
-	<div class="row mx-auto">
-		<div class="col-8 border mx-auto">
-					<form>
-						<div class="row text-left mx-auto">
-							<fieldset id="group1">
-							<div class="form-group ml-3">
-								<legend class="col-form-label"><strong>1.	Czy i w jakim stopniu badania przyczyniły się do zaistnienia wpływu?</strong></legend>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question1" value="Stwierdzono niewielki wkład badań w zaistniały wpływu" type="radio" name="question1">A.	Stwierdzono niewielki wkład badań w zaistniały wpływu.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question1" value="Stwierdzono pośredni związek między badaniami a wpływem" type="radio" name="question1">B.	Stwierdzono pośredni związek między badaniami a wpływem.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question1" value="Badania przyczyniły się do powstania niektórych korzyści" type="radio" name="question1">C.	Badania przyczyniły się do powstania niektórych korzyści.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question1" value="Badania w znacznej mierze przyczyniły się do zaistnienia wpływu" type="radio" name="question1">D.	Badania w znacznej mierze przyczyniły się do zaistnienia wpływu.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question1" value="Badania były niezbędne do zaistnienia wpływu" type="radio" name="question1">E.	Badania były niezbędne do zaistnienia wpływu.</label>
-								</div>
-							</div>
-							</fieldset>
-							<fieldset id="group2">
-							<div class="form-group ml-3">
-								<legend class="col-form-label"><strong>2.	Jakie było znaczenie wkładu badań?</strong></legend>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question2" value="Badania mają niemożliwy do zidentyfikowania wynik społeczny, gospodarczy, środowiskowy lub kulturowy dla szerszej społeczności" type="radio" name="question2">A.	Badania mają niemożliwy do zidentyfikowania wynik społeczny, gospodarczy, środowiskowy lub kulturowy dla szerszej społeczności.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question2" value="Badań przyniosły pewne możliwe do zidentyfikowania korzyści społeczne, gospodarcze, środowiskowe lub kulturowe dla szerszej społeczności" type="radio" name="question2">B.	Badań przyniosły pewne możliwe do zidentyfikowania korzyści społeczne, gospodarcze, środowiskowe lub kulturowe dla szerszej społeczności.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question2" value="Wykorzystanie wyników badań umożliwiło osiągnięcie znacznych korzyści społecznych, gospodarczych, środowiskowych lub kulturowych dla szerszej społeczności" type="radio" name="question2">C.	Wykorzystanie wyników badań umożliwiło osiągnięcie znacznych korzyści społecznych, gospodarczych, środowiskowych lub kulturowych dla szerszej społeczności.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question2" value="Wykorzystanie wyników badań przyniosło znakomite rezultaty w postaci korzyści społecznych, ekonomicznych, środowiskowych lub kulturowych dla szerszej społeczności" type="radio" name="question2">D.	Wykorzystanie wyników badań przyniosło znakomite rezultaty w postaci korzyści społecznych, ekonomicznych, środowiskowych lub kulturowych dla szerszej społeczności.</label>
-								</div>
-							</div>
-						</fieldset>
-							<div class="form-group ml-3">
-								<legend class="col-form-label"><strong>3.	Jaki był charakter i zasięg wpływu opisany w studium przypadku?</strong></legend>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question3" value="Wpływ bezpośredni i/lub pośredni, wywołujący krótkotrwałe zmiany lub przynoszący niewielkie korzyści beneficjentom, użytkownikom końcowym albo szerszej społeczności" type="radio" name="question3">A.	Wpływ bezpośredni i/lub pośredni, wywołujący krótkotrwałe zmiany lub przynoszący niewielkie korzyści beneficjentom, użytkownikom końcowym albo szerszej społeczności.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question3" value="Wpływ bezpośredni i/lub pośredni o małym zasięgu, obejmujący niewielką grupę beneficjentów, użytkowników końcowych lub w niewielkim stopniu przyczyniający się do osiągnięcia korzyści społecznych, ekonomicznych, środowiskowych lub kulturowych" type="radio" name="question3">B.	Wpływ bezpośredni i/lub pośredni o małym zasięgu, obejmujący niewielką grupę beneficjentów, użytkowników końcowych lub w niewielkim stopniu przyczyniający się do osiągnięcia korzyści społecznych, ekonomicznych, środowiskowych lub kulturowych.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question3" value="Wpływ bezpośredni i/lub pośredni o szerokim zasięgu, obejmujący większość potencjalnych beneficjentów i wywołujący długotrwałe zmiany lub generujący różnego rodzaju korzyści dostępne dla szerszej społeczności" type="radio" name="question3">C.	Wpływ bezpośredni i/lub pośredni o szerokim zasięgu, obejmujący większość potencjalnych beneficjentów i wywołujący długotrwałe zmiany lub generujący różnego rodzaju korzyści dostępne dla szerszej społeczności.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question3" value="Wpływ bezpośredni i/lub pośredni o zasięgu globalnym, o czym mogą świadczyć: zakres i skala rozwiązanego problemu, zasięg dostępnych korzyści, powszechność zastosowań albo uniwersalność przekazu." type="radio" name="question3">D.	Wpływ bezpośredni i/lub pośredni o zasięgu globalnym, o czym mogą świadczyć: zakres i skala rozwiązanego problemu, zasięg dostępnych korzyści, powszechność zastosowań albo uniwersalność przekazu.</label>
-								</div>
-							</div>
-							<div class="form-group ml-3">
-								<legend class="col-form-label"><strong>4.	Czy i w jakim stopniu przedstawione dowody pozwalają na stwierdzenie powstania korzyści/ zmian wynikających z zaistnienia wpływu?</strong></legend>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question4" value="Brak wystarczających dowodów na potwierdzenie lub niemożności sprawdzenia korzyści wymienionych w studium przypadku" type="radio" name="question4">A.	Brak wystarczających dowodów na potwierdzenie lub niemożności sprawdzenia korzyści wymienionych w studium przypadku.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question4" value="Słabe dowody (niejednoznaczne oświadczenia, dowody pośrednie, dowody osobowe) trudne lub niemożliwe do weryfikacji" type="radio" name="question4">B.	Słabe dowody (niejednoznaczne oświadczenia, dowody pośrednie, dowody osobowe) trudne lub niemożliwe do weryfikacji.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question4" value="Wiarygodne dowody potwierdzające wystąpienie większości korzyści wymienionych w studium przypadku" type="radio" name="question4">C.	Wiarygodne dowody potwierdzające wystąpienie większości korzyści wymienionych w studium przypadku.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question4" value="Wiarygodne i jednoznaczne potwierdzenia wszystkich korzyści wymienionych w studium przypadku" type="radio" name="question4">D.	Wiarygodne i jednoznaczne potwierdzenia wszystkich korzyści wymienionych w studium przypadku.</label>
-								</div>
-							</div>
-							<div class="form-group ml-3">
-								<legend class="col-form-label"><strong>5. Przedstawione studium przypadku wykazało, że przeprowadzone w jednostce badania miały:</strong></legend>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question5" value="Wyjątkowy wpływ pod względem zasięgu i znaczenia" type="radio" name="question5">A.	Wyjątkowy wpływ pod względem zasięgu i znaczenia.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question5" value="Bardzo duży wpływ pod względem zasięgu i znaczenia" type="radio" name="question5">B.	Bardzo duży wpływ pod względem zasięgu i znaczenia.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question5" value="Znaczny wpływ pod względem zasięgu i znaczenia" type="radio" name="question5">C.	Znaczny wpływ pod względem zasięgu i znaczenia.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question5" value="Niewielki wpływ pod względem zasięgu i znaczenia" type="radio" name="question5">D.	Niewielki wpływ pod względem zasięgu i znaczenia.</label>
-								</div>
-								<div class="radio col">
-			  					<label><input [(ngModel)]="rate.question5" value="Brak możliwości stwierdzenia zaistnienia wpływu" type="radio" name="question5">E.	Brak możliwości stwierdzenia zaistnienia wpływu.</label>
-								</div>
-							</div>
-							<div class="form-group ml-3">
-								<legend class="col-form-label"><strong>6. Ocena ogólna</strong></legend>
-								<select [(ngModel)]="rate.rate" class="form-control ml-3" name='rate'>
-		    					<option value="" disabled selected>Ocena 1-10</option>
-									<option value=10>10</option>
-									<option value=9 value=10>9</option>
-									<option value=8>8</option>
-									<option value=7>7</option>
-									<option value=6>6</option>
-									<option value=5>5</option>
-									<option value=4>4</option>
-									<option value=3>3</option>
-									<option value=2>2</option>
-									<option value=1>1</option>
-								</select>
-							</div>
-						</div>
-						<div class="text-right" style="width: 100%">
-								<button class="btn btn-outline-secondary " type="submit" (click)="rateSurvey()">Wyślij</button>
-						</div>
-					</form>
-				</div>
+  <div class="row mx-auto" *ngIf="!rated">
+    <div class="col-8 border mx-auto">
+      <form>
+        <div class="row text-left mx-auto">
+          <fieldset id="group1">
+            <div class="form-group ml-3">
+              <legend class="col-form-label"><strong>1. Czy i w jakim stopniu badania przyczyniły się do zaistnienia
+                wpływu?</strong></legend>
+              <div class="radio col">
+                <label>
+                  <input [(ngModel)]="rate.question1" value="Stwierdzono niewielki wkład badań w zaistniały wpływu"
+                         type="radio" name="question1">
+                  A. Stwierdzono niewielki wkład badań w zaistniały wpływu.
+                </label>
+              </div>
+              <div class="radio col">
+                <label><input [(ngModel)]="rate.question1"
+                              value="Stwierdzono pośredni związek między badaniami a wpływem" type="radio"
+                              name="question1">B. Stwierdzono pośredni związek między badaniami a wpływem.</label>
+              </div>
+              <div class="radio col">
+                <label><input [(ngModel)]="rate.question1"
+                              value="Badania przyczyniły się do powstania niektórych korzyści" type="radio"
+                              name="question1">C. Badania przyczyniły się do powstania niektórych korzyści.</label>
+              </div>
+              <div class="radio col">
+                <label><input [(ngModel)]="rate.question1"
+                              value="Badania w znacznej mierze przyczyniły się do zaistnienia wpływu" type="radio"
+                              name="question1">D. Badania w znacznej mierze przyczyniły się do zaistnienia
+                  wpływu.</label>
+              </div>
+              <div class="radio col">
+                <label><input [(ngModel)]="rate.question1" value="Badania były niezbędne do zaistnienia wpływu"
+                              type="radio" name="question1">E. Badania były niezbędne do zaistnienia wpływu.</label>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset id="group2">
+            <div class="form-group ml-3">
+              <legend class="col-form-label"><strong>2. Jakie było znaczenie wkładu badań?</strong></legend>
+              <div class="radio col">
+                <label><input [(ngModel)]="rate.question2"
+                              value="Badania mają niemożliwy do zidentyfikowania wynik społeczny, gospodarczy, środowiskowy lub kulturowy dla szerszej społeczności"
+                              type="radio" name="question2">A. Badania mają niemożliwy do zidentyfikowania wynik
+                  społeczny, gospodarczy, środowiskowy lub kulturowy dla szerszej społeczności.</label>
+              </div>
+              <div class="radio col">
+                <label><input [(ngModel)]="rate.question2"
+                              value="Badań przyniosły pewne możliwe do zidentyfikowania korzyści społeczne, gospodarcze, środowiskowe lub kulturowe dla szerszej społeczności"
+                              type="radio" name="question2">B. Badań przyniosły pewne możliwe do zidentyfikowania
+                  korzyści społeczne, gospodarcze, środowiskowe lub kulturowe dla szerszej społeczności.</label>
+              </div>
+              <div class="radio col">
+                <label><input [(ngModel)]="rate.question2"
+                              value="Wykorzystanie wyników badań umożliwiło osiągnięcie znacznych korzyści społecznych, gospodarczych, środowiskowych lub kulturowych dla szerszej społeczności"
+                              type="radio" name="question2">C. Wykorzystanie wyników badań umożliwiło osiągnięcie
+                  znacznych korzyści społecznych, gospodarczych, środowiskowych lub kulturowych dla szerszej
+                  społeczności.</label>
+              </div>
+              <div class="radio col">
+                <label><input [(ngModel)]="rate.question2"
+                              value="Wykorzystanie wyników badań przyniosło znakomite rezultaty w postaci korzyści społecznych, ekonomicznych, środowiskowych lub kulturowych dla szerszej społeczności"
+                              type="radio" name="question2">D. Wykorzystanie wyników badań przyniosło znakomite
+                  rezultaty w postaci korzyści społecznych, ekonomicznych, środowiskowych lub kulturowych dla szerszej
+                  społeczności.</label>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form-group ml-3">
+            <legend class="col-form-label"><strong>3. Jaki był charakter i zasięg wpływu opisany w studium
+              przypadku?</strong></legend>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question3"
+                            value="Wpływ bezpośredni i/lub pośredni, wywołujący krótkotrwałe zmiany lub przynoszący niewielkie korzyści beneficjentom, użytkownikom końcowym albo szerszej społeczności"
+                            type="radio" name="question3">A. Wpływ bezpośredni i/lub pośredni, wywołujący krótkotrwałe
+                zmiany lub przynoszący niewielkie korzyści beneficjentom, użytkownikom końcowym albo szerszej
+                społeczności.</label>
+            </div>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question3"
+                            value="Wpływ bezpośredni i/lub pośredni o małym zasięgu, obejmujący niewielką grupę beneficjentów, użytkowników końcowych lub w niewielkim stopniu przyczyniający się do osiągnięcia korzyści społecznych, ekonomicznych, środowiskowych lub kulturowych"
+                            type="radio" name="question3">B. Wpływ bezpośredni i/lub pośredni o małym zasięgu,
+                obejmujący niewielką grupę beneficjentów, użytkowników końcowych lub w niewielkim stopniu przyczyniający
+                się do osiągnięcia korzyści społecznych, ekonomicznych, środowiskowych lub kulturowych.</label>
+            </div>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question3"
+                            value="Wpływ bezpośredni i/lub pośredni o szerokim zasięgu, obejmujący większość potencjalnych beneficjentów i wywołujący długotrwałe zmiany lub generujący różnego rodzaju korzyści dostępne dla szerszej społeczności"
+                            type="radio" name="question3">C. Wpływ bezpośredni i/lub pośredni o szerokim zasięgu,
+                obejmujący większość potencjalnych beneficjentów i wywołujący długotrwałe zmiany lub generujący różnego
+                rodzaju korzyści dostępne dla szerszej społeczności.</label>
+            </div>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question3"
+                            value="Wpływ bezpośredni i/lub pośredni o zasięgu globalnym, o czym mogą świadczyć: zakres i skala rozwiązanego problemu, zasięg dostępnych korzyści, powszechność zastosowań albo uniwersalność przekazu."
+                            type="radio" name="question3">D. Wpływ bezpośredni i/lub pośredni o zasięgu globalnym, o
+                czym mogą świadczyć: zakres i skala rozwiązanego problemu, zasięg dostępnych korzyści, powszechność
+                zastosowań albo uniwersalność przekazu.</label>
+            </div>
+          </div>
+          <div class="form-group ml-3">
+            <legend class="col-form-label"><strong>4. Czy i w jakim stopniu przedstawione dowody pozwalają na
+              stwierdzenie powstania korzyści/ zmian wynikających z zaistnienia wpływu?</strong></legend>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question4"
+                            value="Brak wystarczających dowodów na potwierdzenie lub niemożności sprawdzenia korzyści wymienionych w studium przypadku"
+                            type="radio" name="question4">A. Brak wystarczających dowodów na potwierdzenie lub
+                niemożności sprawdzenia korzyści wymienionych w studium przypadku.</label>
+            </div>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question4"
+                            value="Słabe dowody (niejednoznaczne oświadczenia, dowody pośrednie, dowody osobowe) trudne lub niemożliwe do weryfikacji"
+                            type="radio" name="question4">B. Słabe dowody (niejednoznaczne oświadczenia, dowody
+                pośrednie, dowody osobowe) trudne lub niemożliwe do weryfikacji.</label>
+            </div>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question4"
+                            value="Wiarygodne dowody potwierdzające wystąpienie większości korzyści wymienionych w studium przypadku"
+                            type="radio" name="question4">C. Wiarygodne dowody potwierdzające wystąpienie większości
+                korzyści wymienionych w studium przypadku.</label>
+            </div>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question4"
+                            value="Wiarygodne i jednoznaczne potwierdzenia wszystkich korzyści wymienionych w studium przypadku"
+                            type="radio" name="question4">D. Wiarygodne i jednoznaczne potwierdzenia wszystkich korzyści
+                wymienionych w studium przypadku.</label>
+            </div>
+          </div>
+          <div class="form-group ml-3">
+            <legend class="col-form-label"><strong>5. Przedstawione studium przypadku wykazało, że przeprowadzone w
+              jednostce badania miały:</strong></legend>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question5" value="Wyjątkowy wpływ pod względem zasięgu i znaczenia"
+                            type="radio" name="question5">A. Wyjątkowy wpływ pod względem zasięgu i znaczenia.</label>
+            </div>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question5" value="Bardzo duży wpływ pod względem zasięgu i znaczenia"
+                            type="radio" name="question5">B. Bardzo duży wpływ pod względem zasięgu i znaczenia.</label>
+            </div>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question5" value="Znaczny wpływ pod względem zasięgu i znaczenia"
+                            type="radio" name="question5">C. Znaczny wpływ pod względem zasięgu i znaczenia.</label>
+            </div>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question5" value="Niewielki wpływ pod względem zasięgu i znaczenia"
+                            type="radio" name="question5">D. Niewielki wpływ pod względem zasięgu i znaczenia.</label>
+            </div>
+            <div class="radio col">
+              <label><input [(ngModel)]="rate.question5" value="Brak możliwości stwierdzenia zaistnienia wpływu"
+                            type="radio" name="question5">E. Brak możliwości stwierdzenia zaistnienia wpływu.</label>
+            </div>
+          </div>
+          <div class="form-group ml-3">
+            <legend class="col-form-label"><strong>6. Ocena ogólna</strong></legend>
+            <select [(ngModel)]="rate.rate" class="form-control ml-3" name='rate'>
+              <option value="" disabled selected>Ocena 1-10</option>
+              <option value=10>10</option>
+              <option value=9>9</option>
+              <option value=8>8</option>
+              <option value=7>7</option>
+              <option value=6>6</option>
+              <option value=5>5</option>
+              <option value=4>4</option>
+              <option value=3>3</option>
+              <option value=2>2</option>
+              <option value=1>1</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-right" style="width: 100%" *ngIf="!rated">
+          <button class="btn btn-outline-secondary" type="submit" (click)="rateSurvey(true)">Save as draft</button>
+          <button class="btn btn-outline-success " type="submit" (click)="rateSurvey(false)">Wyślij</button>
+        </div>
+      </form>
+    </div>
 
 
-	</div>
+  </div>
+</div>

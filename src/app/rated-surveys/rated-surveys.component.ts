@@ -18,12 +18,14 @@ export class RatedSurveysComponent implements OnInit {
   surveys: Survey[];
   survey: Survey = {};
   busy: Subscription;
-  popover: boolean = false;
+  popover = false;
 
-  constructor(
-    private surveyService: SurveyService,
-    private userService: UserService
-    ) { }
+  constructor(private surveyService: SurveyService) {
+  }
+
+  getNonDraftedRates(survey: Survey) {
+    return survey.rates.filter(rate => !rate.draft);
+  }
 
   ngOnInit() {
     this.surveyService.getSurveys('RATED').subscribe(result => {
@@ -36,13 +38,17 @@ export class RatedSurveysComponent implements OnInit {
 
   calculateRate(rates: Rate[]) {
     let res = 0;
+    let count = 0;
     rates.forEach((thing) => {
-      res = res + thing.rate;
+      if (!thing.draft) {
+        res = res + thing.rate;
+        count++;
+      }
     });
-    if (rates.length == 2) {
-      return res / 2;
+    if (count) {
+      return res / count;
     } else {
-      return res;
+      return '';
     }
   }
 

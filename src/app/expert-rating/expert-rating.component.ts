@@ -20,7 +20,8 @@ export class ExpertRatingComponent implements OnInit {
   rate: Rate = {};
   busy: Subscription;
   identity: User;
-  rated: boolean = false;
+  rated = false;
+  ratingIndex = 0;
 
   constructor(
     private surveyService: SurveyService,
@@ -32,9 +33,12 @@ export class ExpertRatingComponent implements OnInit {
   ngOnInit() {
     this.busy = this.surveyService.getSurvey(this.route.snapshot.paramMap.get('id')).subscribe(result => {
       this.survey = result;
-      this.survey.rates.forEach((thing) => {
-        if (thing.expert == this.identity._id) {
+      this.survey.rates.forEach((surveyRate, index) => {
+        if (surveyRate.expert === this.identity._id && !surveyRate.draft) {
           this.rated = true;
+          this.ratingIndex = index;
+        } else if (surveyRate.expert === this.identity._id && surveyRate.draft) {
+          this.rate = Object.assign({}, surveyRate); // deep copy
         }
       });
     },
@@ -48,9 +52,10 @@ export class ExpertRatingComponent implements OnInit {
     this.userService.logout();
   }
 
-  rateSurvey() {
+  rateSurvey(draft: boolean) {
     this.rate.survey = this.survey._id;
     this.rate.expert = this.identity._id;
+    this.rate.draft = draft;
     this.busy = this.surveyService.rateSurvey(this.rate).subscribe(result => {
       alertify.success('Formularz oceniony');
       this.router.navigate(['/expert-surveys']);

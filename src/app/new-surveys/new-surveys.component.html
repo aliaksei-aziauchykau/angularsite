@@ -61,19 +61,19 @@
 					<tr *ngFor="let survey of surveys; index as i">
 						<td>{{survey.title}}</td>
 						<td>
-							<label for="discipline + i">{{survey.discipline}}</label>
+							<label [for]="'discipline' + i">{{survey.discipline}}</label>
 
 						</td>
 						<td>
-							<select [(ngModel)]="survey.expertOne" class="form-control" name="expertOne + i">
+							<select [(ngModel)]="survey.expertOne" class="form-control" [name]="'expertOne' + i">
 								<option *ngIf="survey.expertOne && survey.expertOne.name" value="{{survey.expertOne}}" disabled selected>{{survey.expertOne.name}}</option>
-								<option *ngFor="let expert of survey.experts" value="{{expert._id}}">{{expert.name}}</option>
+								<option *ngFor="let expert of survey.experts" value="{{expert._id}}" [disabled]="survey.expertTwo && survey.expertTwo === expert._id">{{expert.name}}</option>
 							</select>
 						</td>
 						<td>
-							<select [(ngModel)]="survey.expertTwo" class="form-control" name="expertTwo + i">
+							<select [(ngModel)]="survey.expertTwo" class="form-control" [name]="'expertTwo' + i">
 								<option *ngIf="survey.expertTwo && survey.expertTwo.name" value="{{survey.expertTwo}}" disabled>{{survey.expertTwo.name}}</option>
-								<option *ngFor="let expert of survey.experts" value="{{expert._id}}">{{expert.name}}</option>
+								<option *ngFor="let expert of survey.experts" value="{{expert._id}}" [disabled]="survey.expertOne && survey.expertOne === expert._id">{{expert.name}}</option>
 							</select>
 						</td>
 						<td>

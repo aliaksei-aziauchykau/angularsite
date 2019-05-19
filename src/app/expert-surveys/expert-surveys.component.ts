@@ -37,4 +37,8 @@ export class ExpertSurveysComponent implements OnInit {
   logout() {
     this.userService.logout();
   }
+
+  surveyRated(survey: Survey) {
+    return survey.rates.some(rate => !rate.draft && rate.expert === this.userService.theIdentity()._id);
+  }
 }
