@@ -20,7 +20,7 @@
 			        <a class="nav-link" routerLink="/admin-users">Lista użytkowników</a>
 			      </li>
             <li class="nav-item mr-5">
-              <a class="nav-link" routerLink="/assign-users-to-forms">Assign users to forms</a>
+              <a class="nav-link" routerLink="/assign-users-to-forms">Przypisywanie formularzy</a>
             </li>
 			    </ul>
 			    <ul class="navbar-nav">
@@ -50,7 +50,7 @@
 					<tr>
 						<th>#</th>
 						<th>Imię i nazwisko</th>
-						<th>Email</th>
+            <th>Email</th>
 						<th>Rola</th>
 					</tr>
 				</thead>
@@ -58,7 +58,7 @@
 					<tr *ngFor="let user of users; index as i">
 						<td>{{i + 1}}</td>
 						<td>{{user.name}}</td>
-						<td>{{user.email}}</td>
+            <td>{{user.email}}</td>
 						<td *ngIf="user.roles[0]">{{user.roles[0]}}</td>
 						<td *ngIf="!user.roles[0]">USER</td>
 					</tr>

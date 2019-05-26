@@ -20,7 +20,8 @@ export class RatedSurveysComponent implements OnInit {
   busy: Subscription;
   popover = false;
 
-  constructor(private surveyService: SurveyService) {
+  constructor(private surveyService: SurveyService,
+              private userService: UserService) {
   }
 
   getNonDraftedRates(survey: Survey) {
@@ -60,5 +61,9 @@ export class RatedSurveysComponent implements OnInit {
       this.survey = {};
       this.popover = !this.popover;
     }
+  }
+
+  logout() {
+    this.userService.logout();
   }
 }

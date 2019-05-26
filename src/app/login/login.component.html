@@ -1,50 +1,74 @@
 <div class="container main">
-	<div class="row">
-		<div class="col-sm">
-		</div>
-		<div *ngIf="forgot" class="col-sm">
-			<div *ngIf="forgot" class="col-md">
-					<img src="assets/logo1.png" class="mt-3 img-fluid" alt="Responsive image">
-        <h3 class="mt-5">Wprowadź swój email logowania do systemu:</h3>
-				<form>
-					<div class="form-group">
-						<input [(ngModel)]="forgotEmail" type="email" name="forgotEmail" class="form-control mt-5 mb-2" placeholder="Email">
-						<div class="form-row text-center">
-    					<div class="col-12">
-        				<button type="submit" class="btn btn-primary mb-1" (click)="forgotUser()">Wyślij email zmiany hasła</button>
-    					</div>
-						</div>
-						<p class="mb-5 text-center btn btn-light mt-1"><a (click)="changeToLogin()">Wróć do strony logowania</a></p>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div *ngIf="loggedIn" class="col-sm">
-			<button (click)="logout()">Wyloguj</button>
-		</div>
-		<div *ngIf="resetPassw" class="col-sm">
-			<img src="assets/logo1.png" alt="" class="mb-3">
-			<div>
-				<form class="form-group text-center">
-					<input [(ngModel)]="resetPass" (ngModelChange)="validateButton()" class="form-control mb-2" type="password" name="resetPass" placeholder="New Password" required>
-					<input [(ngModel)]="checkPass" (ngModelChange)="validateButton()" class="form-control mb-2" type="password" name="checkPass" placeholder="Confirm Password" required>
-					<button class="btn btn-primary" (click)="resetPassword()"><i [ngBusy]="busy"></i>Resetuj hasło</button>
-				</form>
-			</div>
+    <div *ngIf="forgot">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div *ngIf="forgot" class="col-md">
+                  <mat-card>
+                    <img src="assets/logo1.png" class="mt-3 img-fluid" alt="Responsive image">
 
-		</div>
-		<div *ngIf="loggedOut" class="col-sm">
-			<img src="assets/logo1.png" class="mt-3 img-fluid" alt="Responsive image">
-			<div>
-				<form class="form-group text-center mb-1">
-					<input [(ngModel)]="email" class="form-control mb-2" type="email" name="name" placeholder="Email" required>
-					<input [(ngModel)]="password" class="form-control mb-2" type="password" name="password" placeholder="Password" required>
-					<button class="btn btn-primary myButton" (click)="login()"><i [ngBusy]="busy"></i>Zaloguj</button>
-				</form>
-				<p class="text-center btn btn-light myButton mt-1"><a (click)="changeToForgot()">Przywrócenie hasła</a></p>
-			</div>
-		</div>
-		<div class="col-sm">
-		</div>
-	</div>
+                  <p class="mt-3 mat-h2" style="color: #673ab7">Przywracanie hasła</p>
+                  <form>
+                      <div class="form-group">
+
+                        <mat-form-field appearance="outline" class="example-container">
+                            <mat-label>Email</mat-label>
+                            <input [(ngModel)]="forgotEmail" type="email" name="forgotEmail" matInput placeholder="Wprowadź email" [formControl]="test1" required>
+                            <mat-icon matSuffix color="primary">email</mat-icon>
+                            <mat-error *ngIf="test1.invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                        <div class="form-row text-center">
+                        </div>
+                      </div>
+                    </form>
+                    <div class="text-center">
+                        <button mat-raised-button color="primary" type="submit" (click)="forgotUser()">Wyślij email zmiany hasła</button>
+                        <div class="row mb-2"></div>
+                        <button mat-button color="primary" type="submit" (click)="changeToLogin()">Wróć do strony logowania</button>
+                        </div>
+                  </mat-card>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+      </div>
+
+
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <div *ngIf="loggedOut">
+                <mat-card>
+                    <img src="assets/logo1.png" class="mt-3 img-fluid mb-3" alt="Responsive image">
+
+                        <form class="form-group text-center mb-1">
+                        <mat-form-field appearance="outline" class="example-container">
+                            <mat-label>Email</mat-label>
+                            <input [(ngModel)]="email" type="email" name="name" matInput placeholder="Wprowadź email" [formControl]="email1" required>
+                            <mat-icon matSuffix color="primary">email</mat-icon>
+                            <mat-error *ngIf="email1.invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                        <div class="row"></div>
+                        <mat-form-field appearance="outline" class="example-container">
+                            <mat-label>Hasło</mat-label>
+                            <input [(ngModel)]="password" type="password" name="password" matInput placeholder="Wprowadź hasło" [type]="hide ? 'password' : 'text'" [formControl]="haslo" required>
+                            <mat-icon matSuffix color="primary" (click)="hide = !hide" color="primary">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            <mat-error *ngIf="haslo.invalid">{{getErrorMessage1()}}</mat-error>
+                          </mat-form-field>
+                      </form>
+                      <div class="text-center">
+                      <button mat-raised-button color="primary"(click)="login()" class="custom"><i [ngBusy]="busy"></i>Zaloguj</button>
+                      <div class="row mb-2"></div>
+                      <button mat-button color="primary" (click)="changeToForgot()" class="custom">Przywróć hasło</button>
+                      </div>
+                  </mat-card>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+      </div>
 </div>

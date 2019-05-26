@@ -94,4 +94,8 @@ export class NewSurveysComponent implements OnInit {
       console.log(err);
     });
   }
+
+  logout() {
+    this.userService.logout();
+  }
 }

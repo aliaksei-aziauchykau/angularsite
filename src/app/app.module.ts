@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -24,8 +24,9 @@ import { RatedSurveysComponent } from './rated-surveys/rated-surveys.component';
 import { ExpertComponent } from './expert/expert.component';
 import { ExpertSurveysComponent } from './expert-surveys/expert-surveys.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
-
-import { MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule,
+   MatIconModule, MatDatepickerModule, MatNativeDateModule, MatCardModule, MatMenuModule, MatSidenavModule,
+    MatListModule, MatToolbarModule, MatExpansionModule} from '@angular/material';
 import { AssignUsersToFormsComponent } from './assign-users-to-forms/assign-users-to-forms.component';
 import { UserAssignedFormsComponent } from './user-assigned-forms/user-assigned-forms.component';
 
@@ -50,10 +51,22 @@ import { UserAssignedFormsComponent } from './user-assigned-forms/user-assigned-
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatToolbarModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatExpansionModule,
     MatSelectModule,
+    MatListModule,
+    MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatButtonModule,
+    MatMenuModule,
     CommonModule,
     RouterModule.forRoot(
       appRoutes,
@@ -64,6 +77,8 @@ import { UserAssignedFormsComponent } from './user-assigned-forms/user-assigned-
   providers: [
     AppGuard,
     AdminGuardService,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ExpertGuardService
     ],
   bootstrap: [AppComponent]

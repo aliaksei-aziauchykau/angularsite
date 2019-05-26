@@ -22,4 +22,8 @@ export class AdminUsersComponent implements OnInit {
     });
   }
 
+  logout() {
+    this.userService.logout();
+  }
+
 }

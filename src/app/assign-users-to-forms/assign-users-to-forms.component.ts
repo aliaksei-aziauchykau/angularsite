@@ -43,18 +43,22 @@ export class AssignUsersToFormsComponent implements OnInit {
           this.users = users;
         },
         () => {
-          alertify.error(`An error happened while trying to fetch users with ${ discipline }.`);
+          alertify.error(`Błąd wysyłania dyscypliny: ${ discipline }.`);
         });
   }
 
   onAssign() {
     this.userService.updateUser({ _id: this.form.value.user, numberOfForms: Number.parseInt(this.form.value.numberOfForms, 10) })
       .subscribe(() => {
-          alertify.success(`User successfully assigned to ${ this.form.value.numberOfForms } forms.`);
+          alertify.success(`Użytkownikowi zostało przypisanych ${ this.form.value.numberOfForms } formularzy.`);
           this.form.resetForm();
         },
         () => {
-          alertify.error('An error happened while trying to assign user to forms.');
+          alertify.error('Błąd przypisywania formularzy.');
         });
+  }
+
+  logout() {
+    this.userService.logout();
   }
 }
