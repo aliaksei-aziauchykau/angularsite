@@ -26,4 +26,7 @@ export class UserAssignedFormsComponent implements OnInit {
       });
   }
 
+  logout() {
+    this.userService.logout();
+  }
 }

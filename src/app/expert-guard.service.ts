@@ -15,6 +15,7 @@ export class ExpertGuardService implements CanActivate {
 
 
   canActivate(): boolean {
+    // tslint:disable-next-line:max-line-length
     if (this.userService.isTokenExpired() || !this.userService.theIdentity() || this.userService.theIdentity().roles.indexOf(Role.EXPERT) == -1) {
       this.router.navigate(['/']);
       return false;

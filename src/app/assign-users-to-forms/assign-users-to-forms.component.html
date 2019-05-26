@@ -21,7 +21,7 @@
               <a class="nav-link" routerLink="/admin-users">Lista użytkowników</a>
             </li>
             <li class="nav-item mr-5">
-              <a class="nav-link" routerLink="/assign-users-to-forms">Assign users to forms</a>
+              <a class="nav-link" routerLink="/assign-users-to-forms">Przypisywanie formularzy</a>
             </li>
           </ul>
           <ul class="navbar-nav">
@@ -44,12 +44,16 @@
 
     </div>
   </div>
+
+  <div class="col-8 border rounded mx-auto text-center pb-0">
   <div class="row">
     <div class="col pr-5 pl-5">
       <form
         (ngSubmit)="onAssign()" #form="ngForm"
         class="form-group mx-auto px-auto text-center m-2">
-        <label for="discipline">Select discipline</label>
+        <div class="text-left mt-3">
+        <label for="discipline">Wybierz dziedzinę naukową</label>
+        </div>
         <select
           ngModel
           id="discipline"
@@ -59,7 +63,9 @@
           <option value="" disabled="">Wybierz dziedzinę naukową</option>
           <option *ngFor="let discipline of disciplines" [value]="discipline.key">{{discipline.value}}</option>
         </select>
-        <label for="user">Select user</label>
+        <div class="text-left mt-3 mb-1">
+        <label for="user" >Wybierz użytkownika</label>
+        </div>
         <select
           ngModel
           id="user"
@@ -67,7 +73,9 @@
           class="form-control">
           <option *ngFor="let user of users" [value]="user._id">{{user.name}}</option>
         </select>
-        <label for="numberOfForms">How many forms to assign?</label>
+        <div class="text-left mt-3">
+        <label for="numberOfForms">Ilość przypisanych formularzy</label>
+        </div>
         <select
           class="form-control"
           id="numberOfForms"
@@ -75,8 +83,11 @@
           [(ngModel)]="numberOfForms">
           <option *ngFor="let value of ['2', '3', '4', '5']" [value]="value">{{value}}</option>
         </select>
-        <button class="btn btn-primary">Assign</button>
+        <div class="text-right display: flex mt-4">
+        <button class="btn btn-primary ">Przypisz</button>
+        </div>
       </form>
     </div>
   </div>
+</div>
 </div>

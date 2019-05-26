@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Role } from '../../model/role';
+import {FormControl, Validators} from '@angular/forms';
 const alertify = require('alertifyjs');
 
 @Component({
@@ -12,6 +13,12 @@ const alertify = require('alertifyjs');
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute
+    ) { }
 
   busy: Subscription;
   email: string;
@@ -24,12 +31,26 @@ export class LoginComponent implements OnInit {
   forgotEmail: string;
   resetPass: string;
   canReset: boolean = false; // this needs to be fixed
+  email1 = new FormControl('', [Validators.required, Validators.email]);
+  test1 = new FormControl('', [Validators.required, Validators.email]);
+  haslo = new FormControl('', [Validators.required]);
+  hide = true;
 
-  constructor(
-    private userService: UserService,
-    private router: Router,
-    private route: ActivatedRoute
-    ) { }
+  getErrorMessage() {
+    return this.email1.hasError('required') ? 'Wprowadź email' :
+        this.email1.hasError('email') ? 'Niepoprawny email' :
+            '';
+  }
+  getErrorMessage1() {
+    return this.email1.hasError('required') ? 'Wprowadź hasło' :
+            '';
+  }
+  getErrorMessage2() {
+    return this.test1.hasError('required') ? 'Wprowadź email' :
+        this.test1.hasError('email') ? 'Niepoprawny email' :
+            '';
+  }
+
 
   ngOnInit() {
     setTimeout(() => {
@@ -120,5 +141,4 @@ export class LoginComponent implements OnInit {
   validateButton() {
     this.canReset = this.resetPass !== this.checkPass;
   }
-
 }

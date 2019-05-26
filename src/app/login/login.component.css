@@ -6,3 +6,17 @@
 .myButton {
     width: 160px;
 }
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom {
+  width: 150px !important;
+}
+
+.logowanie {
+  max-width: 30%;
+  
+}

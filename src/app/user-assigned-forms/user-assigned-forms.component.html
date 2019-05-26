@@ -37,19 +37,19 @@
       <table class="table table-striped mx-auto px-auto">
         <thead>
         <tr>
-          <th>Survey</th>
-          <th>Discipline</th>
+          <th>Formularz</th>
+          <th>Dyscyplina</th>
           <th></th>
         </tr>
         </thead>
         <tbody>
         <tr *ngIf="!assignments.length">
-          <td colspan="3">There are no assignments for you at this moment.</td>
+          <td colspan="3">Brak aktualnie przypisanych formularzy!</td>
         </tr>
         <tr *ngFor="let form of assignments; let i = index">
-          <td>Survey#{{i + 1}}</td>
+          <td>Formularz #{{i + 1}}</td>
           <td>{{discipline}}</td>
-          <td><a routerLink="/submit/new" [queryParams]="{discipline: discipline}">Submit</a></td>
+          <td><a routerLink="/submit/new" [queryParams]="{discipline: discipline}">Wypełnij</a></td>
         </tr>
         </tbody>
       </table>

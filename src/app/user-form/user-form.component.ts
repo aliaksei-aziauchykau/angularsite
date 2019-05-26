@@ -57,6 +57,7 @@ export class UserFormComponent implements OnInit {
   logout() {
     this.userService.logout();
   }
+  
 
   saveSurvey() {
     this.survey.discipline = this.route.snapshot.queryParamMap.get('discipline');
@@ -86,4 +87,6 @@ export class UserFormComponent implements OnInit {
       this.saveSurvey();
     }
   }
+
+
 }
