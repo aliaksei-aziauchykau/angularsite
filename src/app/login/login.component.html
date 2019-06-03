@@ -57,9 +57,9 @@
                             <mat-icon matSuffix color="primary" (click)="hide = !hide" color="primary">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             <mat-error *ngIf="haslo.invalid">{{getErrorMessage1()}}</mat-error>
                           </mat-form-field>
+                          <button mat-raised-button color="primary"(click)="login()" class="custom"><i [ngBusy]="busy"></i>Zaloguj</button>
                       </form>
                       <div class="text-center">
-                      <button mat-raised-button color="primary"(click)="login()" class="custom"><i [ngBusy]="busy"></i>Zaloguj</button>
                       <div class="row mb-2"></div>
                       <button mat-button color="primary" (click)="changeToForgot()" class="custom">Przywróć hasło</button>
                       </div>
