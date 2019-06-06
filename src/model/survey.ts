@@ -14,8 +14,8 @@ export interface Survey extends BaseSurvey {
   description?: string;
   proof?: string;
   filledBy?: string;
-  expertOne?: string;
-  expertTwo?: string;
+  expertOne?: User;
+  expertTwo?: User;
   experts?: [User];
   rates?: [Rate];
 }

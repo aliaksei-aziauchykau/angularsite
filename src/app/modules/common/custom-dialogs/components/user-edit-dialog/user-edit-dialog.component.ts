@@ -15,9 +15,9 @@ import { IUser } from 'src/app/models/interfaces/user.interface';
 })
 export class UserEditDialogComponent extends SafeComponent implements OnInit {
 
-    private model = null;
-    private mode: EditorMode = EditorMode.Unknown;
-    private subscription: Subscription;
+    public model = null;
+    public mode: EditorMode = EditorMode.Unknown;
+    public subscription: Subscription;
 
     constructor(
         public dialogRef: MatDialogRef<UserEditDialogComponent>,

@@ -1,16 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 
 @Component({
-  selector: 'app-expert',
-  templateUrl: './expert.component.html',
-  styleUrls: ['./expert.component.css']
+    selector: 'app-expert',
+    templateUrl: './expert.component.html',
+    styleUrls: ['./expert.component.css']
 })
 export class ExpertComponent implements OnInit {
 
-  constructor() { }
+    constructor(private readonly userService: UserService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
+
+    logout() {
+        this.userService.logout();
+    }
 
 }

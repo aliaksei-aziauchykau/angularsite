@@ -17,7 +17,7 @@ export class PersonFormComponent implements OnInit {
     @Input() mode: EditorMode;
     @Output() submitEmitter: EventEmitter<IUser> = new EventEmitter();
     @Output() cancelEmitter: EventEmitter<{}> = new EventEmitter();
-    private hide = true;
+    public hide = true;
 
     public personForm: FormGroup = this.formBuilder.group({
         name: ['', Validators.compose([

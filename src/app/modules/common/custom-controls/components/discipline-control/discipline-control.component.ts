@@ -12,7 +12,7 @@ export class DisciplineControlComponent implements OnInit {
     @Input() data?: string;
     @Output() dataChange: EventEmitter<string> = new EventEmitter();
 
-    private get disciplineKeys() {
+    public get disciplineKeys() {
         return Object.keys(this.disciplines);
     }
 

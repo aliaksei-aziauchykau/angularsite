@@ -13,7 +13,7 @@ export class SimpleMultiSelectComponent implements OnInit {
     @Input() data: string;
     @Output() dataChange: EventEmitter<string> = new EventEmitter();
 
-    private get keys(): string[] {
+    public get keys(): string[] {
         return Object.keys(this.data);
     }
 
