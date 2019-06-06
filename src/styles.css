@@ -1,16 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import url('//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css');
+@import url("//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css");
 .alertify-notifier .ajs-message.ajs-success {
-	color: rgb(255, 255, 255) !important;
-	background: rgba(91, 189, 114, 0.95);
-	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
-  }
-
+  color: rgb(255, 255, 255) !important;
+  background: rgba(91, 189, 114, 0.95);
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+}
 
 .icon {
-	height: 20px;
-	width: 20px;
+  height: 20px;
+  width: 20px;
 }
 
 /* NgBusy styles */
@@ -127,13 +126,28 @@
     opacity: 0.25;
   }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .right-aligned-header > .mat-content {
   justify-content: space-between;
 }
 
-.mat-content > mat-panel-title, .mat-content > mat-panel-description {
-flex: 0 0 auto;
+.mat-content > mat-panel-title,
+.mat-content > mat-panel-description {
+  flex: 0 0 auto;
+}
+.cdk-global-overlay-wrapper {
+  justify-content: center;
+  align-items: center;
+}
+
+.interactable {
+    cursor: pointer;
 }

@@ -1,0 +1,79 @@
+<form (ngSubmit)="onSubmit()"
+      [formGroup]="personForm"
+      class="p-4">
+    <div class="example-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input formControlName="name"
+                   type="text"
+                   name="nameField"
+                   matInput
+                   #inputName
+                   maxlength="30"
+                   placeholder="Enter Name">
+            <mat-icon matSuffix color="primary">face</mat-icon>
+            <mat-hint align="end">{{inputName.value?.length || 0}}/30</mat-hint>
+            <mat-error *ngIf="getPersonControl('name').errors?.required">Required</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email"
+                   type="email"
+                   name="emailField"
+                   matInput
+                   #inputEmail
+                   maxlength="30"
+                   placeholder="Enter email">
+
+            <mat-icon matSuffix color="primary">email</mat-icon>
+            <mat-hint align="end">{{inputEmail.value?.length || 0}}/30</mat-hint>
+            <mat-error *ngIf="getPersonControl('email').errors?.required">Required</mat-error>
+            <mat-error *ngIf="getPersonControl('email').errors?.email">Wrong format</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input formControlName="password"
+                   [type]="hide ? 'password' : 'text'"
+                   name="passwordField"
+                   matInput
+                   #inputPassword
+                   maxlength="30"
+                   placeholder="Provide password">
+            <mat-icon class="interactable" matSuffix color="primary" (click)="hide = !hide" color="primary">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-hint align="end">{{inputPassword.value?.length || 0}}/15</mat-hint>
+            <mat-error *ngIf="getPersonControl('password').errors?.required">Required</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field appearance="outline">
+            <mat-label>College Name</mat-label>
+            <input formControlName="college"
+                   type="text"
+                   name="collegeField"
+                   matInput
+                   #inputEmail
+                   maxlength="30"
+                   placeholder="Enter college name">
+            <mat-icon matSuffix color="primary">grade</mat-icon>
+            <mat-hint align="end">{{inputEmail.value?.length || 0}}/30</mat-hint>
+            <mat-error *ngIf="getPersonControl('college').errors?.required">Required</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="example-container">
+        <app-discipline-control [control]="getPersonControl('disciplines')"></app-discipline-control>
+    </div>
+    <div class="example-container">
+        <app-simple-multi-select [title]="'Roles'"
+                                 [data]="{'ADMIN':'Admin', 'USER':'User', 'EXPERT': 'Expert'}"
+                                 [control]="getPersonControl('roles')">
+        </app-simple-multi-select>
+    </div>
+    <button mat-raised-button type="button" (click)="cancelEmitter.emit()">Cancel</button>
+    <button class="ml-3" mat-raised-button type="submit"
+            [disabled]="personForm.invalid"
+            color="primary">Submit</button>
+</form>

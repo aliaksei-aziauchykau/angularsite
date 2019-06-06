@@ -7,6 +7,7 @@ import * as jwt_decode from 'jwt-decode';
 import 'rxjs/add/operator/publishReplay';
 
 import { User } from '../model/user';
+import { IUser } from './models/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,11 @@ export class UserService {
   constructor(
     private http: HttpClient
   ) {
-    if (isDevMode()) {
-      this.url = 'https://system-ekspercki.herokuapp.com'; // lub lokal jesli server nie dziala
-    } else {
-      this.url = 'http://localhost:3000';
-    }
+    // if (isDevMode()) {
+    //   this.url = 'https://system-ekspercki.herokuapp.com'; // lub lokal jesli server nie dziala
+    // } else {
+    this.url = 'http://localhost:3020';
+    // }
     if (localStorage.currentUser) {
       this.getIdentity().subscribe(user => {
           this.identity = user;
@@ -41,15 +42,27 @@ export class UserService {
   }
 
   getExperts(discipline: string) {
-    return this.http.get<any>(`${ this.url }/api/user/experts/${ discipline }`, this.options).publishReplay(1).refCount();
+    return this.http.get<any>(`${ this.url }/api/user/search/experts/${ discipline }`, this.options).publishReplay(1).refCount();
   }
 
   getUsers() {
     return this.http.get<any>(`${ this.url }/api/user/users`, this.options).publishReplay(1).refCount();
   }
 
+  getUserById(id: string) {
+    return this.http.get<any>(`${ this.url }/api/user/users/${id}`, this.options).publishReplay(1).refCount();
+  }
+
+  createUser(user: IUser) {
+      return this.http.post<any>(`${ this.url }/api/user/users`, user, this.options).publishReplay(1).refCount();
+  }
+
+  updateUserById(id: string, user: IUser) {
+      return this.http.put<any>(`${ this.url }/api/user/users/${id}`, user, this.options).publishReplay(1).refCount();
+  }
+
   getUsersByDiscipline(discipline: string) {
-    return this.http.get<any>(`${ this.url }/api/user/users/${ discipline }`, this.options).publishReplay(1).refCount();
+    return this.http.get<any>(`${ this.url }/api/user/search/users/${ discipline }`, this.options).publishReplay(1).refCount();
   }
 
   updateUser(user: User) {

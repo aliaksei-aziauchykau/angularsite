@@ -1,0 +1,11 @@
+
+.add-icon:hover {
+    color: #f9be1b;
+    cursor: pointer;
+}
+
+tbody tr:hover td {
+    /* border:1px solid #f9be1b; */
+    border-top: 1px solid #f9be1b;
+    border-bottom: 1px solid #f9be1b;
+}

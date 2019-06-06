@@ -17,20 +17,24 @@ import { AssignUsersToFormsComponent } from './assign-users-to-forms/assign-user
 import { UserAssignedFormsComponent } from './user-assigned-forms/user-assigned-forms.component';
 
 export const appRoutes: Routes = [
-  { path: 'home', component: UserHomeComponent },
-  { path: 'submit', component: UserAssignedFormsComponent },
-  { path: 'submit/new', component: UserFormComponent },
-  { path: 'submit/:id', component: UserFormComponent },
-  { path: 'filled', component: UserFormsComponent },
-  { path: '', component: LoginComponent },
-  { path: 'reset/:id/:token', component: LoginComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
-  { path: 'admin-users', component: AdminUsersComponent, canActivate: [AdminGuard] },
-  { path: 'new-surveys', component: NewSurveysComponent, canActivate: [AdminGuard] },
-  { path: 'rated-surveys', component: RatedSurveysComponent, canActivate: [AdminGuard] },
-  { path: 'assign-users-to-forms', component: AssignUsersToFormsComponent, canActivate: [AdminGuard] },
-  { path: 'expert', component: ExpertComponent, canActivate: [ExpertGuard] },
-  { path: 'expert-rating/:id', component: ExpertRatingComponent, canActivate: [ExpertGuard] },
-  { path: 'expert-surveys', component: ExpertSurveysComponent, canActivate: [ExpertGuard] },
-  { path: '**', redirectTo: '' }
+    { path: 'home', component: UserHomeComponent },
+    { path: 'submit', component: UserAssignedFormsComponent },
+    { path: 'submit/new', component: UserFormComponent },
+    { path: 'submit/:id', component: UserFormComponent },
+    { path: 'filled', component: UserFormsComponent },
+    { path: '', component: LoginComponent },
+    { path: 'reset/:id/:token', component: LoginComponent },
+    { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+    { path: 'admin-users', component: AdminUsersComponent, canActivate: [AdminGuard] },
+    { path: 'new-surveys', component: NewSurveysComponent, canActivate: [AdminGuard] },
+    { path: 'rated-surveys', component: RatedSurveysComponent, canActivate: [AdminGuard] },
+    { path: 'assign-users-to-forms', component: AssignUsersToFormsComponent, canActivate: [AdminGuard] },
+    { path: 'expert', component: ExpertComponent, canActivate: [ExpertGuard] },
+    { path: 'expert-rating/:id', component: ExpertRatingComponent, canActivate: [ExpertGuard] },
+    { path: 'expert-surveys', component: ExpertSurveysComponent, canActivate: [ExpertGuard] },
+    {
+        path: 'user-edit',
+        loadChildren: './modules/pages/user-edit-page/user-edit-page.module#UserEditPageModule'
+    },
+    { path: '**', redirectTo: '' }
 ];

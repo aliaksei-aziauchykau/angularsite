@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, forkJoin } from 'rxjs';
 
 import { User } from '../../model/user';
 import { UserService } from '../user.service';
 import { Survey } from '../../model/survey';
 import { SurveyService } from '../survey.service';
 import { Rate } from '../../model/rate';
+import { IUser } from '../models/interfaces/user.interface';
+import { tap, zip, zipAll } from 'rxjs/operators';
 const alertify = require('alertifyjs');
 
 @Component({
@@ -19,6 +21,7 @@ export class RatedSurveysComponent implements OnInit {
   survey: Survey = {};
   busy: Subscription;
   popover = false;
+  users: IUser[];
 
   constructor(private surveyService: SurveyService,
               private userService: UserService) {
@@ -29,17 +32,25 @@ export class RatedSurveysComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.surveyService.getSurveys('RATED').subscribe(result => {
-      this.surveys = result.surveys;
-    },
-    err => {
-      console.log(err);
-    });
+    const users$ = this.userService.getUsers().pipe(
+        tap(x => this.users = x)
+    );
+    const surveys$ = this.surveyService.getSurveys('RATED')
+    .pipe(
+        tap(result => this.surveys = result.surveys)
+    );
+    forkJoin(users$, surveys$).subscribe();
+  }
+
+  getUserById(id: string): IUser {
+    const result = this.users.find(x => x._id === id);
+    return result;
   }
 
   calculateRate(rates: Rate[]) {
     let res = 0;
     let count = 0;
+    rates = rates || [];
     rates.forEach((thing) => {
       if (!thing.draft) {
         res = res + thing.rate;

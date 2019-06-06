@@ -1,144 +1,191 @@
-<div class="under" [class.hidden]="!popover" (click)="showPopover()">
+<div class="under"
+     [class.hidden]="!popover"
+     (click)="showPopover()">
 </div>
-<div class="over text-left p-4 border border-dark" [class.hidden]="!popover">
-		<dl class="row">
-				<dt class="col-sm-4">Tytuł studium przypadku: </dt>
-				<dd class="col-sm-8">{{survey.title}}</dd>
+<div class="over text-left p-4 border border-dark"
+     [class.hidden]="!popover">
+    <dl class="row">
+        <dt class="col-sm-4">Tytuł studium przypadku: </dt>
+        <dd class="col-sm-8">{{survey.title}}</dd>
 
-				<dt class="col-sm-4">Dyscyplina naukowa: </dt>
-				<dd class="col-sm-8">
-						<span *ngIf="survey.discipline">{{survey.discipline}}</span>
-				</dd>
+        <dt class="col-sm-4">Dyscyplina naukowa: </dt>
+        <dd class="col-sm-8">
+            <span *ngIf="survey.discipline">{{survey.discipline}}</span>
+        </dd>
 
-				<dt class="col-sm-4">Streszczenie: </dt>
-				<dd class="col-sm-8"><span *ngIf="survey.summary">{{survey.summary}}</span></dd>
+        <dt class="col-sm-4">Streszczenie: </dt>
+        <dd class="col-sm-8"><span *ngIf="survey.summary">{{survey.summary}}</span></dd>
 
-				<dt class="col-sm-4">Wkład badań naukowych: </dt>
-				<dd class="col-sm-8"><span *ngIf="survey.contribution">{{survey.contribution}}</span></dd>
+        <dt class="col-sm-4">Wkład badań naukowych: </dt>
+        <dd class="col-sm-8"><span *ngIf="survey.contribution">{{survey.contribution}}</span></dd>
 
-				<dt class="col-sm-4">Dowód wkładu naukowego nr.1: </dt>
-				<dd class="col-sm-8"><span *ngIf="survey.proof1">{{survey.proof1}}</span></dd>
-				<dt class="col-sm-4">Dowód wkładu naukowego nr.2: </dt>
-				<dd class="col-sm-8"><span *ngIf="survey.proof2">{{survey.proof2}}</span></dd>
-				<dt class="col-sm-4">Dowód wkładu naukowego nr.3: </dt>
-				<dd class="col-sm-8"><span *ngIf="survey.proof3">{{survey.proof3}}</span></dd>
-				<dt class="col-sm-4">Dowód wkładu naukowego nr.4: </dt>
-				<dd class="col-sm-8"><span *ngIf="survey.proof4">{{survey.proof4}}</span></dd>
-				<dt class="col-sm-4">Dowód wkładu naukowego nr.5: </dt>
-				<dd class="col-sm-8"><span *ngIf="survey.proof5">{{survey.proof5}}</span></dd>
+        <dt class="col-sm-4">Dowód wkładu naukowego nr.1: </dt>
+        <dd class="col-sm-8"><span *ngIf="survey.proof1">{{survey.proof1}}</span></dd>
+        <dt class="col-sm-4">Dowód wkładu naukowego nr.2: </dt>
+        <dd class="col-sm-8"><span *ngIf="survey.proof2">{{survey.proof2}}</span></dd>
+        <dt class="col-sm-4">Dowód wkładu naukowego nr.3: </dt>
+        <dd class="col-sm-8"><span *ngIf="survey.proof3">{{survey.proof3}}</span></dd>
+        <dt class="col-sm-4">Dowód wkładu naukowego nr.4: </dt>
+        <dd class="col-sm-8"><span *ngIf="survey.proof4">{{survey.proof4}}</span></dd>
+        <dt class="col-sm-4">Dowód wkładu naukowego nr.5: </dt>
+        <dd class="col-sm-8"><span *ngIf="survey.proof5">{{survey.proof5}}</span></dd>
 
-				<dt class="col-sm-4">Opis szczegółowy wpływu: </dt>
-				<dd class="col-sm-8"><span *ngIf="survey.description">{{survey.description}}</span></dd>
+        <dt class="col-sm-4">Opis szczegółowy wpływu: </dt>
+        <dd class="col-sm-8"><span *ngIf="survey.description">{{survey.description}}</span></dd>
 
-				<dt class="col-sm-4">Dowody wpływu: </dt>
-				<dd class="col-sm-8"><span *ngIf="survey.proof">{{survey.proof}}</span></dd>
-			</dl>
-			<hr style="border-color:#18BC9C">
-			<dl class="row">
-					<dt class="col-sm-4">Przypisany ekspert nr 1: </dt>
-					<dd class="col-sm-8">{{survey.expertOne.name}}</dd>
+        <dt class="col-sm-4">Dowody wpływu: </dt>
+        <dd class="col-sm-8"><span *ngIf="survey.proof">{{survey.proof}}</span></dd>
+    </dl>
+    <hr style="border-color:#18BC9C">
+    <dl class="row">
+        <dt class="col-sm-4">Przypisany ekspert nr 1: </dt>
+        <dd class="col-sm-8">{{survey.expertOne?.name}}</dd>
 
-					<dt class="col-sm-4">Przypisany ekspert nr 2: </dt>
-					<dd class="col-sm-8">{{survey.expertTwo.name}}</dd>
-				</dl>
-				<hr style="border-color:#18BC9C">
-	<div *ngFor="let rate of survey.rates; index as i" class="mb-3">
-			<h4>Ocena wpływu badań experta nr {{i + 1}} </h4>
-			<dl class="row mt-2">
-					<dt class="col-sm-4">Czy i w jakim stopniu badania przyczyniły się do zaistnienia wpływu?: </dt>
-					<dd class="col-sm-8">{{rate.question1}}</dd>
+        <dt class="col-sm-4">Przypisany ekspert nr 2: </dt>
+        <dd class="col-sm-8">{{survey.expertTwo?.name}}</dd>
+    </dl>
+    <hr style="border-color:#18BC9C">
+    <div *ngFor="let rate of survey.rates; index as i"
+         class="mb-3">
+        <h4>Ocena wpływu badań experta nr {{i + 1}} </h4>
+        <dl class="row mt-2">
+            <dt class="col-sm-4">Czy i w jakim stopniu badania przyczyniły się do zaistnienia wpływu?: </dt>
+            <dd class="col-sm-8">{{rate.question1}}</dd>
 
-					<dt class="col-sm-4">Jakie było znaczenie wkładu badań?: </dt>
-					<dd class="col-sm-8">{{rate.question2}}</dd>
+            <dt class="col-sm-4">Jakie było znaczenie wkładu badań?: </dt>
+            <dd class="col-sm-8">{{rate.question2}}</dd>
 
-					<dt class="col-sm-4">Jaki był charakter i zasięg wpływu opisany w studium przypadku?: </dt>
-					<dd class="col-sm-8">{{rate.question3}}</dd>
+            <dt class="col-sm-4">Jaki był charakter i zasięg wpływu opisany w studium przypadku?: </dt>
+            <dd class="col-sm-8">{{rate.question3}}</dd>
 
-					<dt class="col-sm-4">Czy i w jakim stopniu przedstawione dowody pozwalają na stwierdzenie powstania korzyści / zmian wynikających z zaistnienia wpływu?: </dt>
-					<dd class="col-sm-8">{{rate.question4}}</dd>
+            <dt class="col-sm-4">Czy i w jakim stopniu przedstawione dowody pozwalają na stwierdzenie powstania korzyści
+                / zmian wynikających z zaistnienia wpływu?: </dt>
+            <dd class="col-sm-8">{{rate.question4}}</dd>
 
-					<dt class="col-sm-4">Przedstawione studium przypadku wykazało, że przeprowadzone w jednostce badania miały: </dt>
-					<dd class="col-sm-8">{{rate.question5}}</dd>
+            <dt class="col-sm-4">Przedstawione studium przypadku wykazało, że przeprowadzone w jednostce badania miały:
+            </dt>
+            <dd class="col-sm-8">{{rate.question5}}</dd>
 
-					<dt class="col-sm-4">Wystawiona ocena wpływu badań: </dt>
-					<dd class="col-sm-8">{{rate.rate}}</dd>
-				</dl>
-				<hr style="border-color:#18BC9C">
-	</div>
-					<dl class="row mt-2">
-						<dt class="col-sm-4">Średnia ocena dwóch ekspertów: </dt>
-						<dd class="col-sm-8">{{calculateRate(survey.rates)}}</dd>
-					</dl>
+            <dt class="col-sm-4">Wystawiona ocena wpływu badań: </dt>
+            <dd class="col-sm-8">{{rate.rate}}</dd>
+        </dl>
+        <hr style="border-color:#18BC9C">
+    </div>
+    <dl class="row mt-2">
+        <dt class="col-sm-4">Średnia ocena dwóch ekspertów: </dt>
+        <dd class="col-sm-8">{{calculateRate(survey.rates)}}</dd>
+    </dl>
 </div>
 <div class="container">
-	<div class="row">
-		<div class="col">
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
-  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    			<span class="navbar-toggler-icon"></span>
-  			</button>
-  			<div class="collapse navbar-collapse" id="navbarText">
-			    <ul class="navbar-nav mr-auto">
-			      <li class="nav-item mr-5">
-			        <a class="nav-link" routerLink="/admin">Strona główna</a>
-			      </li>
-			      <li class="nav-item mr-5">
-			        <a class="nav-link" routerLink="/new-surveys">Lista formularzy</a>
-			      </li>
-			      <li class="nav-item mr-5">
-			        <a class="nav-link" routerLink="/rated-surveys">Ocenione formularze</a>
-			      </li>
-			      <li class="nav-item mr-5">
-			        <a class="nav-link" routerLink="/admin-users">Lista użytkowników</a>
-			      </li>
-            <li class="nav-item mr-5">
-              <a class="nav-link" routerLink="/assign-users-to-forms">Przypisywanie formularzy</a>
-            </li>
-			    </ul>
-			    <ul class="navbar-nav">
-			    	<li class="nav-item">
-			        <a class="nav-link" href="/" (click)="logout()">Wyloguj</a>
-			      </li>
-			    </ul>
-			  </div>
-			</nav>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm">
+    <div class="row">
+        <div class="col">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+                <button class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarText"
+                        aria-controls="navbarText"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse"
+                     id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item mr-5">
+                            <a class="nav-link"
+                               routerLink="/admin">Strona główna</a>
+                        </li>
+                        <li class="nav-item mr-5">
+                            <a class="nav-link"
+                               routerLink="/new-surveys">Lista formularzy</a>
+                        </li>
+                        <li class="nav-item mr-5">
+                            <a class="nav-link"
+                               routerLink="/rated-surveys">Ocenione formularze</a>
+                        </li>
+                        <li class="nav-item mr-5">
+                            <a class="nav-link"
+                               routerLink="/admin-users">Lista użytkowników</a>
+                        </li>
+                        <li class="nav-item mr-5">
+                            <a class="nav-link"
+                               routerLink="/assign-users-to-forms">Przypisywanie formularzy</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="/"
+                               (click)="logout()">Wyloguj</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
 
-		</div>
-		<div class="col-sm text-center">
-			<img src="assets/logo1.png" class="mt-3 img-fluid" alt="Responsive image">
-		</div>
-		<div class="col-sm">
+        </div>
+        <div class="col-sm text-center">
+            <img src="assets/logo1.png"
+                 class="mt-3 img-fluid"
+                 alt="Responsive image">
+        </div>
+        <div class="col-sm">
 
-		</div>
-	</div>
-	<div class="row">
-		<div class="col text-center pr-5 pl-5 mt-2">
-			<table class="table table-dark">
-				<thead>
-					<tr>
-						<th>Tytuł studium przypadku</th>
-						<th>Dziedzina nauki</th>
-						<th>Ekspert nr 1</th>
-            <th>Ekspert nr 2</th>
-            <th>Oceny cząstkowe ekspertów</th>
-						<th>Średnia ocena wpływu</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let survey of surveys" (click)="showPopover(survey)">
-						<td>{{survey.title}}</td>
-						<td><span *ngIf="survey.discipline">{{survey.discipline}}</span></td>
-						<td><span *ngIf="survey.expertOne">{{survey.expertOne.name}}</span></td>
-            <td><span *ngIf="survey.expertTwo">{{survey.expertTwo.name}}</span></td>
-            <td><span *ngFor="let rate of getNonDraftedRates(survey)" class="list-comma">{{rate.rate}} </span></td>
-						<td>{{calculateRate(survey.rates)}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center pr-5 pl-5 mt-2">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>Tytuł studium przypadku</th>
+                        <th>Username</th>
+                        <th>Dziedzina nauki</th>
+                        <th>Ekspert nr 1</th>
+                        <th>Ekspert nr 2</th>
+                        <th>Oceny cząstkowe ekspertów</th>
+                        <th>Średnia ocena wpływu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let survey of surveys"
+                        (click)="showPopover(survey)">
+                        <td>{{survey.title}}</td>
+
+                        <td>
+                            <div>{{getUserById(survey.filledBy).name}}</div>
+                            <div>
+                                <small>{{getUserById(survey.filledBy).college}}</small>
+                            </div>
+                        </td>
+                        <td><span *ngIf="survey.discipline">{{survey.discipline}}</span></td>
+                        <td>
+                            <div *ngIf="survey.expertOne">{{survey.expertOne.name}}</div>
+                            <div>
+                                <small>
+                                    {{getUserById(survey.expertOne._id).college}}
+                                </small>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngIf="survey.expertTwo">{{survey.expertTwo.name}}</div>
+                            <div>
+                                <small>
+                                    {{getUserById(survey.expertTwo._id).college}}
+                                </small>
+                            </div>
+                        </td>
+                        <td><span *ngFor="let rate of getNonDraftedRates(survey)"
+                                  class="list-comma">{{rate.rate}}
+                            </span></td>
+                        <td>{{calculateRate(survey.rates)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

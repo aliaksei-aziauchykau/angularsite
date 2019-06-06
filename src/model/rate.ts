@@ -4,6 +4,7 @@ export interface Rate extends BaseRate {
   question3?: string;
   question4?: string;
   question5?: string;
+  description?: string;
   rate?: number;
   survey?: string;
   expert?: string;

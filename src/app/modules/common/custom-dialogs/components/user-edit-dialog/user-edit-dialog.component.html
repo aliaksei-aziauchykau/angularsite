@@ -1,0 +1,11 @@
+<div [ngBusy]="subscription"
+     class="border rounded mx-auto pb-0">
+    <ng-container *ngIf="model">
+        <h2 class="display-5 mb-4 mt-4 text-center">User form</h2>
+        <app-person-form [model]="model"
+                         [mode]="mode"
+                         (submitEmitter)="submit($event)"
+                         (cancelEmitter)="closeDialog()">
+        </app-person-form>
+    </ng-container>
+</div>
