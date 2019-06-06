@@ -36,21 +36,23 @@ export class AdminUsersComponent extends SafeComponent implements OnInit {
     }
 
     openDialogUserAdd() {
-        this.dialog.open(UserEditDialogComponent, {
-            width: '40em',
-            data: null
-        });
+        this.openDialogUser(null);
     }
 
+
     openDialogUserEdit(id: string) {
-        this.dialog.open(UserEditDialogComponent, {
+        this.openDialogUser({ id });
+    }
+
+    openDialogUser(data: {}) {
+        const dialogRef = this.dialog.open(UserEditDialogComponent, {
             width: '40em',
-            data: { id }
+            data
         });
 
-        this.dialog.afterAllClosed.pipe(
+        dialogRef.afterClosed().pipe(
             takeUntil(this.unsubscriber),
-            flatMap(() => this.getUsers$())
+            mergeMap(() => this.getUsers$())
         ).subscribe();
     }
 
