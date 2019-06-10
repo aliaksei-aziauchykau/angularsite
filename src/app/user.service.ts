@@ -8,6 +8,7 @@ import 'rxjs/add/operator/publishReplay';
 
 import { User } from '../model/user';
 import { IUser } from './models/interfaces/user.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -20,11 +21,9 @@ export class UserService {
     constructor(
         private http: HttpClient
     ) {
-        // if (isDevMode()) {
-        //   this.url = 'https://system-ekspercki.herokuapp.com'; // lub lokal jesli server nie dziala
-        // } else {
-        this.url = 'http://localhost:3000';
-        // }
+
+        this.url = environment.apiServer;
+
         if (localStorage.currentUser) {
             this.getIdentity().subscribe(user => {
                 this.identity = user;

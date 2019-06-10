@@ -1,71 +1,92 @@
-<form [formGroup]="uploadForm"
-      class="p-4">
-    <div class="example-container form-group">
-        <div>
-            <input class="mb-4"
-                   formControlName="document"
-                   type="file"
-                   ng2FileSelect
-                   accept=".pdf"
-                   [uploader]="uploader"
-                   name="userPdf"
-                   multiple />
-            <div class="drop-zone py-4 mb-2">
-                <div ng2FileDrop
-                     [uploader]="uploader">
-                    Drag and drop files to upload
+<mat-accordion>
+<mat-expansion-panel [expanded]="true" class="mt-2">
+    <mat-expansion-panel-header class="right-aligned-header">
+        <mat-panel-title>
+            Please add files to upload
+        </mat-panel-title>
+        <mat-panel-description>
+            Items
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form [formGroup]="uploadForm"
+          class="p-4">
+        <div class="example-container form-group">
+            <div>
+                <input class="mb-4"
+                       formControlName="document"
+                       type="file"
+                       ng2FileSelect
+                       accept=".pdf"
+                       [uploader]="uploader"
+                       name="userPdf"
+                       multiple />
+                <div class="drop-zone py-4 mb-2">
+                    <div ng2FileDrop
+                         [uploader]="uploader">
+                        Drag and drop files to upload
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="example-container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">
-                        #
-                    </th>
-                    <th scope="col">
-                        File name
-                    </th>
-                    <th scope="col">
-                        Remove
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of uploader.queue; let i = index;">
-                    <th scope="row">
-                        {{i + 1}}
-                    </th>
-                    <th>
-                        {{item._file.name}}
-                    </th>
-                    <th class="text-center">
-                        <mat-icon (click)="item.remove()">delete</mat-icon>
-                    </th>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="example-container">
-        <mat-form-field appearance="outline">
-            <mat-label>Description</mat-label>
-            <textarea formControlName="description"
-                      name="descriptionField"
-                      rows="3"
-                      matInput
-                      #inputDescription
-                      maxlength="30"
-                      placeholder="Enter Description">
+        <div class="example-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            #
+                        </th>
+                        <th scope="col">
+                            File name
+                        </th>
+                        <th scope="col">
+                            Remove
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of uploader.queue; let i = index;">
+                        <th scope="row">
+                            {{i + 1}}
+                        </th>
+                        <th>
+                            {{item._file.name}}
+                        </th>
+                        <th class="text-center">
+                            <mat-icon (click)="item.remove()">delete</mat-icon>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea formControlName="description"
+                          name="descriptionField"
+                          rows="3"
+                          matInput
+                          #inputDescription
+                          maxlength="30"
+                          placeholder="Enter Description">
                     </textarea>
-            <mat-hint align="end">{{inputDescription.value?.length || 0}}/30</mat-hint>
-        </mat-form-field>
-    </div>
+                <mat-hint align="end">{{inputDescription.value?.length || 0}}/30</mat-hint>
+            </mat-form-field>
+        </div>
 
-    <!-- <button mat-raised-button
+        <!-- <button mat-raised-button
             color="primary"
             [disabled]="uploadForm.invalid"
             type="submit">Upload Data</button> -->
-    <ng-content></ng-content>
-</form>
+    </form>
+</mat-expansion-panel>
+<mat-expansion-panel (opened)="panelOpenState = true"
+                     (closed)="panelOpenState = false">
+</mat-expansion-panel>
+</mat-accordion>
+<div class="mt-4" *ngIf="userId && surveyId">
+    <app-upload-items-presenter-control [userId]="userId"
+                                        [surveyId]="surveyId">
+
+    </app-upload-items-presenter-control>
+</div>
+<ng-content></ng-content>

@@ -21,7 +21,8 @@ import { UploadItemsPresenterControlComponent } from './components/upload-items-
   ],
   exports: [
     DisciplineControlComponent,
-    SimpleMultiSelectComponent
+    SimpleMultiSelectComponent,
+    UploadItemsPresenterControlComponent
   ]
 })
 export class CustomControlsModule { }

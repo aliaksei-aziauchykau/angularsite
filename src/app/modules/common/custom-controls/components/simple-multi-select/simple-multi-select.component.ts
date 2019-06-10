@@ -11,6 +11,7 @@ export class SimpleMultiSelectComponent implements OnInit {
     @Input() title: string;
     @Input() control: FormControl;
     @Input() data: string;
+    @Input() isMultiple?: boolean;
     @Output() dataChange: EventEmitter<string> = new EventEmitter();
 
     public get keys(): string[] {

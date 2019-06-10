@@ -38,6 +38,10 @@ export class AssignUsersToFormsComponent implements OnInit {
   }
 
   onSelectDiscipline(discipline: string) {
+    if (!discipline) {
+        this.users = [];
+        return;
+    }
     this.userService.getUsersByDiscipline(discipline)
       .subscribe(users => {
           this.users = users;

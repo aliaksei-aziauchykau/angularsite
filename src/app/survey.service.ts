@@ -4,6 +4,7 @@ import 'rxjs/add/operator/publishReplay';
 
 import { Survey } from '../model/survey';
 import { Rate } from '../model/rate';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -16,11 +17,7 @@ export class SurveyService {
     constructor(
         private http: HttpClient
     ) {
-        // if (isDevMode()) {
-        //     this.url = 'https://system-ekspercki.herokuapp.com'; // lub lokal jesli server nie dziala
-        // } else {
-            this.url = 'http://localhost:3000';
-        // }
+        this.url = environment.apiServer;
     }
 
     static getDisciplines(): { key: string, value: string }[] {

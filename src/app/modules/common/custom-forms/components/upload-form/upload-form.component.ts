@@ -4,8 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { FileUploader } from 'ng2-file-upload';
 import { UploadService } from 'src/app/upload.service';
 import { ActivatedRoute } from '@angular/router';
-const alertify = require('alertifyjs');
-import { tap } from 'rxjs/operators';
+import { UserService } from 'src/app/user.service';
 
 @Component({
     selector: 'app-upload-form',
@@ -20,13 +19,17 @@ export class UploadFormComponent implements OnInit {
         description: [''],
     });
 
+    userId: string;
+    surveyId: string;
+
     public uploader: FileUploader = new FileUploader({
         isHTML5: true
     });
 
     constructor(
-        private fb: FormBuilder,
-        private uploadService: UploadService,
+        private readonly fb: FormBuilder,
+        private readonly uploadService: UploadService,
+        private readonly userService: UserService,
         private readonly activatedRoute: ActivatedRoute) { }
 
     public get uploadItems() {
@@ -49,7 +52,8 @@ export class UploadFormComponent implements OnInit {
             console.log(fileItem.name, this.uploader.queue);
             data.append('userPdf', fileItem, fileItem.name);
             data.append('fileSeq', 'seq' + j);
-            this.uploadFile(userId, surveyId, data).subscribe(dataResponse => alertify(dataResponse.message));
+            data.append('description', this.uploadForm.get('description').value);
+            this.uploadFile(userId, surveyId, data).subscribe();
         }
         this.uploader.clearQueue();
     }
@@ -74,7 +78,7 @@ export class UploadFormComponent implements OnInit {
         }
         this.uploader.clearQueue();
         const source = dataSet.map(
-            data => this.uploadFile(userId, surveyId, data).pipe(tap(dataResponse => alertify(dataResponse.message))));
+            data => this.uploadFile(userId, surveyId, data).pipe());
         return source;
     }
 
@@ -84,6 +88,7 @@ export class UploadFormComponent implements OnInit {
 
 
     ngOnInit() {
+        this.userId = this.userService.theIdentity() && this.userService.theIdentity()._id || null;
+        this.surveyId = this.activatedRoute.snapshot.params && this.activatedRoute.snapshot.params.id || null;
     }
-
 }

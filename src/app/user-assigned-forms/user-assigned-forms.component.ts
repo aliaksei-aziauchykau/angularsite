@@ -21,7 +21,7 @@ export class UserAssignedFormsComponent implements OnInit {
   ngOnInit() {
     this.userService.getNumberOfAssignedForms()
       .subscribe(res => {
-        this.numberOfAssignments = res.numberOfAssignments;
+        this.numberOfAssignments = res.numberOfAssignments || 0;
         this.discipline = res.discipline;
       });
   }

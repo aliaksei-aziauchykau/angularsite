@@ -1,41 +1,43 @@
 <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header class="right-aligned-header">
             <mat-panel-title>
-                Uploaded files
+                Uploaded files on Server
             </mat-panel-title>
             <mat-panel-description>
-                Des
+                Items
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">
-                        #
-                    </th>
-                    <th scope="col">
-                        File name
-                    </th>
-                    <th scope="col">
-                        Remove
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of uploadItems; let i = index;">
-                    <th scope="row">
-                        {{i + 1}}
-                    </th>
-                    <th>
-                        {{item.name}}
-                    </th>
-                    <th class="text-center">
-                        <mat-icon>delete</mat-icon>
-                    </th>
-                </tr>
-            </tbody>
-        </table>
+        <form class="p-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            #
+                        </th>
+                        <th scope="col">
+                            File name
+                        </th>
+                        <th scope="col">
+                            Remove
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of uploadItems; let i = index;">
+                        <th scope="row">
+                            {{i + 1}}
+                        </th>
+                        <th>
+                            <a href="{{environment.apiServer}}/{{item.exactPath}}">{{item.name}}</a>
+                        </th>
+                        <th class="text-center">
+                            <mat-icon>delete</mat-icon>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </mat-expansion-panel>
     <mat-expansion-panel (opened)="panelOpenState = true"
                          (closed)="panelOpenState = false">
