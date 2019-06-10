@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiServer: 'http://localhost:3020'
+  apiServer: 'https://morning-wave-86011.herokuapp.com'
 };

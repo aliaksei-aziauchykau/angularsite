@@ -19,6 +19,8 @@ export class UploadFormComponent implements OnInit {
         description: [''],
     });
 
+    panelOpenState;
+
     userId: string;
     surveyId: string;
 
