@@ -1,0 +1,18 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.drop-zone {
+    border: 1px dashed black;
+    /* border-radius: 10px; */
+}
+
+mat-icon:hover {
+    color: #f9be1b;
+    cursor: pointer;
+}

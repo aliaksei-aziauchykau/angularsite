@@ -35,6 +35,7 @@ import { AssignUsersToFormsComponent } from './assign-users-to-forms/assign-user
 import { UserAssignedFormsComponent } from './user-assigned-forms/user-assigned-forms.component';
 import { LayoutModule } from './modules/common/layout/layout.module';
 import { UserEditDialogComponent } from './modules/common/custom-dialogs/components/user-edit-dialog/user-edit-dialog.component';
+import { CustomFormsModule } from './modules/common/custom-forms/custom-forms.module';
 
 @NgModule({
     declarations: [
@@ -81,7 +82,9 @@ import { UserEditDialogComponent } from './modules/common/custom-dialogs/compone
         ),
         NgBusyModule,
         LayoutModule,
-        CustomDialogsModule
+        CustomDialogsModule,
+        CustomFormsModule,
+        LayoutModule
     ],
     providers: [
         AppGuard,

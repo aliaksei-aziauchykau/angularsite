@@ -37,7 +37,7 @@ export const appRoutes: Routes = [
         loadChildren: './modules/pages/user-edit-page/user-edit-page.module#UserEditPageModule'
     },
     {
-        path: 'upload',
+        path: 'upload/:id',
         loadChildren: './modules/pages/upload-page/upload-page.module#UploadPageModule'
     },
     { path: '**', redirectTo: '' }

@@ -16,11 +16,11 @@ export class SurveyService {
     constructor(
         private http: HttpClient
     ) {
-        if (isDevMode()) {
-            this.url = 'https://system-ekspercki.herokuapp.com'; // lub lokal jesli server nie dziala
-        } else {
+        // if (isDevMode()) {
+        //     this.url = 'https://system-ekspercki.herokuapp.com'; // lub lokal jesli server nie dziala
+        // } else {
             this.url = 'http://localhost:3000';
-        }
+        // }
     }
 
     static getDisciplines(): { key: string, value: string }[] {

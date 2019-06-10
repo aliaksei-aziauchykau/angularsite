@@ -15,6 +15,7 @@
                         <th>Imię i nazwisko</th>
                         <th>Email</th>
                         <th>Rola</th>
+                        <th>link</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,7 @@
                         <td>{{user.email}}</td>
                         <td *ngIf="user.roles[0]">{{user.roles[0]}}</td>
                         <td *ngIf="!user.roles[0]">USER</td>
+                        <td><a class="btn btn-light" [routerLink]="['/upload', user._id]"> Upload </a></td>
                     </tr>
                 </tbody>
             </table>
