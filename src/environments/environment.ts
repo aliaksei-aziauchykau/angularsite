@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiServer: 'http://localhost:3020'
+  apiServer: 'http://localhost:3000'
   // https://system-ekspercki.herokuapp.com'
 };
 

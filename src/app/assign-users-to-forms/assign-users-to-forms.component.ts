@@ -17,6 +17,7 @@ export class AssignUsersToFormsComponent implements OnInit {
   @ViewChild('form') form: NgForm;
 
   numberOfForms: number;
+  discipline: string;
 
   get forms() {
     return new Array(this.numberOfForms);
@@ -42,6 +43,7 @@ export class AssignUsersToFormsComponent implements OnInit {
         this.users = [];
         return;
     }
+    this.discipline = discipline;
     this.userService.getUsersByDiscipline(discipline)
       .subscribe(users => {
           this.users = users;
@@ -52,7 +54,11 @@ export class AssignUsersToFormsComponent implements OnInit {
   }
 
   onAssign() {
-    this.userService.updateUser({ _id: this.form.value.user, numberOfForms: Number.parseInt(this.form.value.numberOfForms, 10) })
+    this.userService.updateUser({
+        _id: this.form.value.user,
+        numberOfForms: Number.parseInt(this.form.value.numberOfForms, 10),
+        assignedDiscipline: this.discipline
+     })
       .subscribe(() => {
           alertify.success(`Użytkownikowi zostało przypisanych ${ this.form.value.numberOfForms } formularzy.`);
           this.form.resetForm();

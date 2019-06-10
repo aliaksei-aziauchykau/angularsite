@@ -36,18 +36,22 @@ export class SurveyStepperComponent extends SafeComponent implements OnInit {
         this.surveyId = this.activatedRoute.snapshot.params && this.activatedRoute.snapshot.params.id || null;
 
         const zipFiles = (userId, surveyId) => this.uploadForm.uploadSubmitObservable(userId, surveyId);
-        const sourceForAdd$ = this.surveyForm.saveObservable()
-            .pipe(
-                mergeMap((x: { postedSurvey: { _id: string } }) =>
-                    forkJoin(zipFiles(this.userId, x.postedSurvey._id))),
-                tap(x => this.router.navigate(['/home']))
-            );
-        const sourceForUpdate$ = forkJoin(
-            [this.surveyForm.saveObservable(), ...zipFiles(this.userId, this.surveyId)]).pipe(tap(() => this.router.navigate(['/home'])));
+
 
         if (this.surveyId && this.userId) {
+            const sourceForUpdate$ = forkJoin(
+                [
+                    this.surveyForm.saveObservable(),
+                    ...zipFiles(this.userId, this.surveyId)]).pipe(tap(() => this.router.navigate(['/home'])));
+
             sourceForUpdate$.pipe(takeUntil(this.unsubscriber)).subscribe();
         } else {
+            const sourceForAdd$ = this.surveyForm.saveObservable()
+                .pipe(
+                    mergeMap((x: { postedSurvey: { _id: string } }) =>
+                        forkJoin(zipFiles(this.userId, x.postedSurvey._id))),
+                    tap(x => this.router.navigate(['/home']))
+                );
             sourceForAdd$.pipe(takeUntil(this.unsubscriber)).subscribe();
         }
     }

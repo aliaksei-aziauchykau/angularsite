@@ -22,7 +22,7 @@ export class UserAssignedFormsComponent implements OnInit {
     this.userService.getNumberOfAssignedForms()
       .subscribe(res => {
         this.numberOfAssignments = res.numberOfAssignments || 0;
-        this.discipline = res.discipline;
+        this.discipline = res.assignedDiscipline;
       });
   }
 

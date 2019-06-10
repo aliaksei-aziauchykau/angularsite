@@ -7,7 +7,8 @@ export interface User extends BaseUser {
   joined?: Date;
   seen?: Date;
   password?: string;
-  discipline?: string;
+  disciplines?: string;
+  assignedDiscipline?: string;
   numberOfForms: number;
 }
 
