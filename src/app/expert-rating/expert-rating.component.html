@@ -104,6 +104,13 @@
                 <p><strong>Opis szczegółowy wpływu:</strong> {{survey.description}}</p>
                 <p><strong>Dowody wpływu:</strong> {{survey.proof}}</p>
             </div>
+            <div class="pb-3" *ngIf="survey">
+                <div class="ml-3">
+                    <app-upload-items-presenter-control [userId]="survey.filledBy" [surveyId]="survey._id" [visibility]="false">
+
+                    </app-upload-items-presenter-control>
+                </div>
+            </div>
         </div>
     </div>
 

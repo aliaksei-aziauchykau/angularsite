@@ -213,6 +213,10 @@ export class SurveyService {
         return this.http.get<any>(`${this.url}/api/survey/${status}/${id}/${expert}`, this.options).publishReplay(1).refCount();
     }
 
+    getRatedSurveys() {
+        return this.http.get<any>(`${this.url}/api/search/rated-surveys`, this.options).publishReplay(1).refCount();
+    }
+
     getSurvey(id: string) {
         return this.http.get<any>(`${this.url}/api/survey/${id}`, this.options).publishReplay(1).refCount();
     }

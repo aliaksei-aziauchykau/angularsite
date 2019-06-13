@@ -22,6 +22,7 @@ export class RatedSurveysComponent implements OnInit {
     busy: Subscription;
     popover = false;
     users: IUser[];
+    visibilityDocs = false;
 
     constructor(
         private surveyService: SurveyService,
@@ -35,12 +36,12 @@ export class RatedSurveysComponent implements OnInit {
     ngOnInit() {
         const users$ = this.userService.getUsers().pipe(
             tap(x => this.users = x)
-        );
-        const surveys$ = this.surveyService.getSurveys('RATED')
+        ).subscribe();
+        const surveys$ = this.surveyService.getRatedSurveys()
             .pipe(
                 tap(result => this.surveys = result.surveys)
-            );
-        forkJoin(users$, surveys$).subscribe();
+            ).subscribe();
+        // forkJoin(users$, surveys$).subscribe();
     }
 
     getUserById(id: string): IUser {
@@ -73,6 +74,7 @@ export class RatedSurveysComponent implements OnInit {
             this.survey = {};
             this.popover = !this.popover;
         }
+        this.visibilityDocs = false;
     }
 
     logout() {

@@ -13,6 +13,7 @@ export class UploadItemsPresenterControlComponent implements OnInit {
 
     @Input() userId: string;
     @Input() surveyId: string;
+    @Input() visibility = true;
 
     panelOpenState = false;
 

@@ -37,6 +37,14 @@
         <dd class="col-sm-8"><span *ngIf="survey.proof">{{survey.proof}}</span></dd>
     </dl>
     <hr style="border-color:#18BC9C">
+    <dl class="row ml-0" *ngIf="survey._id && survey.filledBy">
+        <app-upload-items-presenter-control [userId]="survey.filledBy"
+                                            [surveyId]="survey._id"
+                                            [visibility]="visibilityDocs">
+
+        </app-upload-items-presenter-control>
+    </dl>
+    <hr style="border-color:#18BC9C">
     <dl class="row">
         <dt class="col-sm-4">Przypisany ekspert nr 1: </dt>
         <dd class="col-sm-8">{{survey.expertOne?.name}}</dd>
