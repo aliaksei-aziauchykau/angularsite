@@ -8,6 +8,10 @@
                 Items
             </mat-panel-description>
         </mat-expansion-panel-header>
+        <div class="ml-4" *ngIf="showDescription && uploadItems.length > 0">
+            <strong>Description: </strong>
+            <span>{{getDescription()}}</span>
+        </div>
         <form class="p-4">
             <table class="table">
                 <thead>

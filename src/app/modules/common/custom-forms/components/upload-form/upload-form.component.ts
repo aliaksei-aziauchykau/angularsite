@@ -38,28 +38,6 @@ export class UploadFormComponent implements OnInit {
         return this.uploader.queue;
     }
 
-    uploadSubmit(userId: string, surveyId: string) {
-        for (const queueItem of this.uploader.queue) {
-
-            const fileItem = queueItem._file;
-            if (fileItem.size > 15000000) {
-                alert('Each File should be less than 15 MB of size.');
-                return;
-            }
-        }
-
-        for (let j = 0; j < this.uploader.queue.length; j++) {
-            const data = new FormData();
-            const fileItem = this.uploader.queue[j]._file;
-            console.log(fileItem.name, this.uploader.queue);
-            data.append('userPdf', fileItem, fileItem.name);
-            data.append('fileSeq', 'seq' + j);
-            data.append('description', this.uploadForm.get('description').value);
-            this.uploadFile(userId, surveyId, data).subscribe();
-        }
-        this.uploader.clearQueue();
-    }
-
     uploadSubmitObservable(userId: string, surveyId: string): Observable<any>[] {
         const dataSet: FormData[] = [];
         for (const queueItem of this.uploader.queue) {
@@ -76,6 +54,7 @@ export class UploadFormComponent implements OnInit {
             const fileItem = this.uploader.queue[j]._file;
             data.append('userPdf', fileItem, fileItem.name);
             data.append('fileSeq', 'seq' + j);
+            data.append('description', this.uploadForm.get('description').value);
             dataSet.push(data);
         }
         this.uploader.clearQueue();

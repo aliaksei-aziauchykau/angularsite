@@ -14,6 +14,7 @@ export class UploadItemsPresenterControlComponent implements OnInit {
     @Input() userId: string;
     @Input() surveyId: string;
     @Input() visibility = true;
+    @Input() showDescription = true;
 
     panelOpenState = false;
 
@@ -21,6 +22,15 @@ export class UploadItemsPresenterControlComponent implements OnInit {
     environment = environment;
 
     constructor(private readonly uploadService: UploadService) { }
+
+    public getDescription() {
+        const result = this.uploadItems.filter(x => x.description !== undefined
+                && x.description !== null
+                && x.description !== '')
+            .map(x => x.description)
+            .join(' | ');
+        return result;
+    }
 
     ngOnInit() {
         if (this.userId && this.surveyId) {

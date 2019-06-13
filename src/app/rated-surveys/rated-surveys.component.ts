@@ -36,12 +36,12 @@ export class RatedSurveysComponent implements OnInit {
     ngOnInit() {
         const users$ = this.userService.getUsers().pipe(
             tap(x => this.users = x)
-        ).subscribe();
+        );
         const surveys$ = this.surveyService.getRatedSurveys()
             .pipe(
                 tap(result => this.surveys = result.surveys)
-            ).subscribe();
-        // forkJoin(users$, surveys$).subscribe();
+            );
+        forkJoin(users$, surveys$).subscribe();
     }
 
     getUserById(id: string): IUser {
